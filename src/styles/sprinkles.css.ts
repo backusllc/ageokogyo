@@ -1,5 +1,8 @@
 import { defineProperties, createSprinkles } from '@vanilla-extract/sprinkles';
 import { vars } from './vars.css';
+import { lengthEachByem } from './lengthEachByem.css';
+import { lengthEachByRem } from './lengthEachByRem.css';
+import { percentage } from './percentage.css';
 
 const responsiveProperties = defineProperties({
   conditions: {
@@ -10,24 +13,24 @@ const responsiveProperties = defineProperties({
   defaultCondition: 'mobile',
   properties: {
     //remで計算
-    width: vars.lengthEachByRem,
-    height: vars.lengthEachByRem,
-    fontSize: vars.lengthEachByRem,
-    paddingTop: vars.lengthEachByRem,
-    paddingRight: vars.lengthEachByRem,
-    paddingBottom: vars.lengthEachByRem,
-    paddingLeft: vars.lengthEachByRem,
-    marginTop: vars.lengthEachByRem,
-    marginRight: vars.lengthEachByRem,
-    marginBottom: vars.lengthEachByRem,
-    marginLeft: vars.lengthEachByRem,
+    width: lengthEachByRem.lengthEachByRem,
+    height: lengthEachByRem.lengthEachByRem,
+    fontSize: lengthEachByRem.lengthEachByRem,
+    paddingTop: lengthEachByRem.lengthEachByRem,
+    paddingRight: lengthEachByRem.lengthEachByRem,
+    paddingBottom: lengthEachByRem.lengthEachByRem,
+    paddingLeft: lengthEachByRem.lengthEachByRem,
+    marginTop: lengthEachByRem.lengthEachByRem,
+    marginRight: lengthEachByRem.lengthEachByRem,
+    marginBottom: lengthEachByRem.lengthEachByRem,
+    marginLeft: lengthEachByRem.lengthEachByRem,
     //emで計算
-    letterSpacing: vars.lengthEachByem,
-    lineHeight: vars.lengthEachByem,
-    gap: vars.lengthEachByem,
+    letterSpacing: lengthEachByem.lengthEachByem,
+    lineHeight: lengthEachByem.lengthEachByem,
+    gap: lengthEachByem.lengthEachByem,
     //%で計算
-    top: vars.percentage,
-    left: vars.percentage,
+    top: percentage.percentage,
+    left: percentage.percentage,
 
     display: ['none', 'flex', 'block'],
     flexDirection: ['row', 'column'],
