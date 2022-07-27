@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'gatsby'
 import { navLinks, li } from './index.css'
-import { API, Amplify, Auth, graphqlOperation, AWS } from 'aws-amplify';
-import { GRAPHQL_AUTH_MODE } from "@aws-amplify/api-graphql/lib/types";
-import { listMenus } from "./../../../../graphql/queries";
-import config from './../../../../utils/awsAuth'
-import { GraphQLResult } from '@aws-amplify/api-graphql';
-import { ListMenusQuery } from '../../../../API';
-import { useAuth } from '../../../../hooks/useAuth';
 
 export const McMenu = () => {
     const [menu, setMenu] = useState([]);
-    const { isAuthenticated, isLoading } = useAuth();
 
     useEffect(() => {
         fetchMenu();
