@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import Img from "gatsby-image"
-import { Flex, Box } from 'rebass';
-import styled from 'styled-components';
 import { sprinkles } from '../../../styles/sprinkles.css';
 import { divGalleryWrap, divGalleryItem, divSubGalleryWrap, divSubGalleryItem } from './Gallery.css'
 

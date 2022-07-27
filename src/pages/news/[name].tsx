@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import dateFormat from "dateformat";
 
-import { Flex, Box } from 'rebass';
 import SEO from '../../utils/seo';
 import LinkButton from '../../components/organisms/Shopify/LinkButton';
 import {

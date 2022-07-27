@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Flex, Box } from 'rebass';
 import SEO from '../../utils/seo';
 import Gallery from './../../components/organisms/Shopify/Gallery';
 import Buttons from './../../components/organisms/Shopify/Buttons';
