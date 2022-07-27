@@ -1,0 +1,61 @@
+type Menu
+  @model
+  @auth(
+    rules: [
+      { allow: owner, ownerField: "tenantId", identityClaim: "custom:tenantId" }
+      { allow: public, provider: iam, operations: [read] }
+    ]
+  ) {
+  tenantId: String! @primaryKey(sortKeyFields: ["id"])
+  id: ID!
+  tenant: Tenant @hasOne(fields: ["tenantId"])
+  icon: String
+  iconPosition: String
+  imageUrl: String
+  label: String!
+  order: Int!
+  parentId: String
+  target: Boolean!
+  url: String!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Tenant
+  @model
+  @auth(
+    rules: [
+      { allow: owner, ownerField: "tenantId", identityClaim: "custom:tenantId" }
+      { allow: public, provider: iam, operations: [read] }
+    ]
+  ) {
+  tenantId: String! @primaryKey
+  planId: ID
+  plan: Plan! @hasOne(fields: ["planId"])
+  status: TalentStatus!
+  contractDate: AWSDate!
+  billingStartDate: AWSDate
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+enum TalentStatus {
+  Active
+  Disabled
+}
+
+type Plan
+  @model
+  @auth(
+    rules: [
+      { allow: owner, ownerField: "tenantId", identityClaim: "custom:tenantId" }
+      { allow: public, provider: iam, operations: [read] }
+    ]
+  ) {
+  id: ID! @primaryKey
+  name: String!
+  price: Int!
+  description: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
