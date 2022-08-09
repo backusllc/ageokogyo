@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import gql from 'graphql-tag';
 import { useQuery } from "@apollo/react-hooks";
 
-export const useGetProductByIdSettings = (aa: any) => useQuery(query, { variables: { id: aa } });
+export const useGetProductByIdSettings = (id: any) => useQuery(query, { variables: { id: id } });
 
 const query = gql`
 query ($id: ID) {

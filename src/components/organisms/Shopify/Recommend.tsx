@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { Link } from 'gatsby';
 import { sprinkles } from '../../../styles/sprinkles.css';
 import { useProductRecommendationSettings } from '../../../hooks/useProductRecommendationSettings'
 import { divFlex, img, p, price } from './Recommend.css'
@@ -26,11 +27,11 @@ const Recommend = () => {
                         productRecommendationLists.productRecommendations.map((recommendationProduct, index) => (
                             index < 5 ? (
                                 <div key={index} className={itemDiv}>
-                                    < a key={recommendationProduct.id} href={recommendationProduct.id}>
+                                    <Link key={recommendationProduct.id} to={`/products/${recommendationProduct.id}`}>
                                         <img className={img} src={recommendationProduct.images.edges[0].node.transformedSrc} alt="" />
                                         <p className={p}>{recommendationProduct.title}</p>
-                                        <p className={price}>{`${parseInt(recommendationProduct.priceRange.minVariantPrice.amount,10)}円 (税込)`}</p>
-                                    </a>
+                                        <p className={price}>{`${parseInt(recommendationProduct.priceRange.minVariantPrice.amount, 10)}円 (税込)`}</p>
+                                    </Link>
                                 </div>
                             )
                                 : null))}

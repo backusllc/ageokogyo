@@ -1,12 +1,18 @@
 import React, { useContext, useEffect } from 'react';
+import { Link } from 'gatsby';
+
 import dateFormat from "dateformat";
 import { useBlogSettings } from '../../../hooks/useBlogSettings'
 
 
 import { ShopifyContext } from '../../../context/shopifyContext';
 
-const NewsLists = () => {
-    const { loading: articleLoading, data: articleLists } = useBlogSettings();
+interface Props {
+    count: number;
+}
+
+const NewsLists = ({ count }: Props) => {
+    const { loading: articleLoading, data: articleLists } = useBlogSettings(count);
 
     const { fetchAllCollections, collections } = useContext(ShopifyContext)
 
@@ -25,7 +31,7 @@ const NewsLists = () => {
     };
 
     if (!collections) return <div></div>;
-    if (articleLoading) { return <div></div>; }
+    if (articleLoading) return <div></div>;
 
     return (
         <>
@@ -33,7 +39,7 @@ const NewsLists = () => {
                 {articleLists.articles.edges.map((item, index) => {
                     return <>
                         <div key={item.node.handle} style={{ maxWidth: "768px", margin: "0 auto 1rem auto" }}>
-                            <a href={`news/${item.node.handle}`} style={{ display: "flex", justifyContent: "flex-start", gap: "1rem", flexWrap: 'wrap' }}>
+                            <Link to={`/news/${item.node.handle}`} style={{ display: "flex", justifyContent: "flex-start", gap: "1rem", flexWrap: 'wrap' }}>
                                 <label style={{
                                     fontSize: "15px",
                                     verticalAlign: "middle",
@@ -56,7 +62,7 @@ const NewsLists = () => {
                                     display: "block",
                                     width: '100%',
                                 }}>{item.node.title}</p>
-                            </a>
+                            </Link>
                             <hr />
                         </div>
                     </>

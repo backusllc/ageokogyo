@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
+import { AnchorLink } from "gatsby-plugin-anchor-links";
 
-import { AtHeading, AtImage } from '../../../atoms'
 import { svg, grid, itemDiv, titleDiv, title } from './index.css'
 import { sprinkles } from '../../../../styles/sprinkles.css';
 import { TileSectionProps } from 'types/ContentSettings/TileSectionSettings';
@@ -29,7 +29,7 @@ export const OgTileSection = (props: TileSectionProps) => {
           })}`}>
             {props.dataSrc.map((item, index) => {
               return (
-                <a key={item.node.id} href={`/product_category#${item.node.description}`}>
+                <AnchorLink key={item.node.id} to={`/product_category#${item.node.description}`}>
                   <div key={index} className={`${itemDiv} ${sprinkles({
                     display: {
                       mobile: "block",
@@ -48,7 +48,7 @@ export const OgTileSection = (props: TileSectionProps) => {
                       <Arrow className={svg} />
                     </div>
                   </div>
-                </a>
+                </AnchorLink>
               )
             })}
           </div>

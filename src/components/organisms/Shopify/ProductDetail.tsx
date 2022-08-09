@@ -10,27 +10,25 @@ import { sprinkles } from '../../../styles/sprinkles.css';
 import Recommend from './Recommend';
 
 interface Props {
-    productId: string,
+    product: any,
     isDispalyRecommend: boolean,
 }
 
-const ProductDetail = ({ productId, isDispalyRecommend = true }: Props) => {
+const ProductDetail = ({ product, isDispalyRecommend = true }: Props) => {
 
     useEffect(() => {
-        fetchProductWithId(productId)
         return () => {
         };
     }, []);
 
-    const { fetchProductWithId, product, client } = useContext(ShopifyContext);
+    const { fetchProductWithId, client } = useContext(ShopifyContext);
     const context = useContext(ShopifyContext);
     const [quantity, setQuantity] = useState(1);
-
     const [variant, setVariant] = useState(product.variants ? product.variants[0] : null);
-    const productVariant = variant ? (client.product.helpers.variantForOptions(product, variant) || variant) : variant;
-    const [available, setAvailable] = useState(variant ? productVariant.availableForSale : null)
+    // const [available, setAvailable] = useState(variant ? productVariant.availableForSale : null)
 
     if (!product.title) return <div></div>
+    const productVariant = variant ? (client.product.helpers.variantForOptions(product, variant) || variant) : variant;
 
     const divProduct = sprinkles({
         display: {
@@ -48,8 +46,6 @@ const ProductDetail = ({ productId, isDispalyRecommend = true }: Props) => {
             [target.name]: target.value,
         }))
     }
-
-    console.log(product);
 
     return (
         <>

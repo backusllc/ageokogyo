@@ -80,10 +80,10 @@ export default [
         "link": "/faq",
         "dropdown": []
     },
-    // {
-    //     "id": 6,
-    //     "text": "お問合せ",
-    //     "link": "/contact",
-    //     "dropdown": []
-    // }
+    {
+        "id": 6,
+        "text": "お問合せ",
+        "link": "/contact",
+        "dropdown": []
+    }
 ]

@@ -1,21 +1,21 @@
 import React, { useContext, useEffect } from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
 
 import { ShopifyContext } from './../context/shopifyContext';
 import {
-    OgBanner,
-    OgMegaHeader,
+    OgGatsbyBanner,
     OgTileSection,
 } from '../components/organisms';
 import { McTitle } from '../components/molecules';
 import CategoryProducts from '../components/organisms/Shopify/CategoryProducts';
-import Footer from '../components/organisms/Shopify/Footer';
 import { useCollectionProductsSettings } from '../hooks/useCollectionProductsSettings';
-
+import { McBreadcrumbs } from '../components/molecules';
 
 export default function product_category() {
     const { collections, fetchAllCollections } = useContext(ShopifyContext)
     const collectionDisplayCount = 9;
     const { loading: collectionProductLoading, data: collectionProductLists } = useCollectionProductsSettings(collectionDisplayCount);
+    const data = useStaticQuery(query);
 
     useEffect(() => {
         asyncFetchAllCollections();
@@ -33,7 +33,8 @@ export default function product_category() {
     if (collectionProductLoading) return <div></div>;
     return (
         <>
-            <OgBanner imageUrl='https://cdn.shopify.com/s/files/1/0582/1831/5820/files/online_header.png?v=1658494910' maxWidth="full" link="" marginBottom={"80"} />
+            <OgGatsbyBanner image={data.allFile.edges[0].node.childrenImageSharp[0]} alt={data.allFile.edges[0].node.name} maxWidth="full" link="" marginBottom={"10"} />
+            <McBreadcrumbs listItem='オンラインストア' listUrl='/product_category' />
             <McTitle
                 mobileFontSize1="16"
                 desktopFontSize1="16"
@@ -67,3 +68,18 @@ export default function product_category() {
         </>
     )
 }
+
+const query = graphql`
+query {
+  allFile (filter: {name:{eq:"online_header"}}){
+    edges {
+      node {
+        name
+        childrenImageSharp {
+            gatsbyImageData(placeholder: BLURRED)
+        }
+      }
+    }
+  }
+}
+`

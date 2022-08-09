@@ -18,3 +18,12 @@ export const divSubGalleryItem: string = style({
     cursor: "pointer",
     border: "solid 1px #ccc",
 });
+
+export const imgWrap: string = style({
+    minHeight: '170px',
+    "@media": {
+        'screen and (min-width: 800px)': {
+            minHeight: '270px',
+        },
+    }
+});

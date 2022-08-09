@@ -1,29 +1,42 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
-import { ShopifyContext } from './../context/shopifyContext';
 import {
-    OgBanner,
-    OgMegaHeader,
+  OgGatsbyBanner,
 } from '../components/organisms';
-import Footer from '../components/organisms/Shopify/Footer';
-import { useCollectionProductsSettings } from '../hooks/useCollectionProductsSettings';
+import { useSinglePageSettings } from '../hooks/useSinglePageSettings'
+import { McBreadcrumbs } from '../components/molecules';
 
 export default function faq() {
+  const id = "Z2lkOi8vc2hvcGlmeS9QYWdlLzg2Mjk1NDQ1NTQ4";
+  const { loading: pageLoading, data: pageData } = useSinglePageSettings(id);
+  const data = useStaticQuery(query);
 
-    return (
-        <div className="page">
-            <OgBanner imageUrl='https://cdn.shopify.com/s/files/1/0582/1831/5820/files/img_faq.png?v=1658567232' link="" maxWidth={"full"} marginBottom={"80"} />
-            <div className="inner">
-                <h2>自転車について</h2>
-                <h3>「シティサイクル」と「クロスバイク」の違いって？</h3>
-                <p>
-                    シティサイクルは、いわゆるママチャリ。かごやライトがついていて便利な半面、鉄製の為重くて錆びやすい弱点も。クロスバイクは変速機を備え長距離移動に適した自転車。かごやライトは無いが、アルミなどの軽く錆びにくい材質でできているので長く乗れる。用途に合わせて選ぼう。
-                </p>
-                <h2>部品に付いて</h2>
-                <h3>スペアキーは取り寄せ出来ますか？</h3>
-                <p>
-                    一部を除き（お問合せ下さい）、自転車本体ではなく、キー自体に刻印されている番号が分れば、お取り寄せ可能です。
-                </p>
-            </div>
-        </div>
-    )
+  if (pageLoading) return <></>;
+
+  return (
+    <div className="page">
+      <OgGatsbyBanner image={data.allFile.edges[0].node.childrenImageSharp[0]} alt={data.allFile.edges[0].node.name} link="" maxWidth={"full"} marginBottom={"10"} />
+      <McBreadcrumbs listItem='よくある質問' listUrl='/contact' />
+      <div className="inner">
+        <div className='faq'
+          dangerouslySetInnerHTML={{ __html: pageData.page.body }}
+        />
+      </div>
+    </div>
+  )
 }
+
+const query = graphql`
+query {
+  allFile (filter: {name:{eq:"img_faq"}}){
+    edges {
+      node {
+        name
+        childrenImageSharp {
+            gatsbyImageData(placeholder: BLURRED)
+        }
+      }
+    }
+  }
+}
+`

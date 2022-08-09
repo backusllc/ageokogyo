@@ -9,8 +9,7 @@ import { GatsbyProvider } from "./src/context/context"
 import { ShopifyProvider } from "./src/context/shopifyContext"
 import { OgMegaHeader } from "./src/components/organisms";
 import Footer from './src/components/organisms/Shopify/Footer';
-
-// import "./src/components/provider/RootProvider/index.css"
+import "fontsource-noto-sans-jp"
 
 const wrapPageElement: GatsbyBrowser['wrapPageElement'] = ({
     element,

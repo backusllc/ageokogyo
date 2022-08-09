@@ -4,6 +4,7 @@ export * from '../molecules/Menus/McBigMenu'
 export * from '../molecules/McSlider'
 export * from '../molecules/McTitle'
 export * from '../molecules/Grids/McMultiGrid'
+export * from '../molecules/McBreadcrumbs'
 
 export * from '../molecules/Grids/McColumnThirdsGrid'
 

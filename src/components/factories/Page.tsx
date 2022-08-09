@@ -7,32 +7,18 @@ import { darkMode, theme, whiteMode } from '../../styles/theme.css';
 import { PageRuntimeSettings } from '../../types/PageSettings';
 import { CommonRuntimeSettings } from '../../types/SiteSettings';
 import { McTitle } from '../molecules';
-import { useBlogSettings } from '../../hooks/useBlogSettings'
 
 import { useCollectionProductsSettings } from '../../hooks/useCollectionProductsSettings'
 
 
 import {
-  OgNormalHeader,
-  OgThreeLineTextSection,
   OgTileSection,
-  OgTableLayoutSection,
-  OgNavigation,
-  OgFloatHeader,
-  OgMegaHeader,
-  OgFullWidthHero,
-  OgTwoDevidedSection,
   OgBanner,
 } from '../organisms';
 import Pickup from '../../components/organisms/Shopify/Pickup';
 import CategoryProducts from '../../components/organisms/Shopify/CategoryProducts';
 import NewsLists from '../../components/organisms/Shopify/NewsLists';
-import Header from './Header';
 import Hero from './Hero';
-import Content from './Content';
-import Footer from './Footer';
-
-import { wrapDiv } from './Page.css'
 
 interface Props {
   commonSettings: CommonRuntimeSettings;
@@ -41,17 +27,9 @@ interface Props {
 
 export const Page = (props: Props) => {
   const collectionDisplayCount = 128;
-  const { loading: articleLoading, data: articleLists } = useBlogSettings();
   const { loading: collectionProductLoading, data: collectionProductLists } = useCollectionProductsSettings(collectionDisplayCount);
 
   const [selectedTheme, setSelectedTheme] = React.useState<string>(whiteMode);
-  const toggleTheme = () => {
-    if (selectedTheme === whiteMode) {
-      setSelectedTheme(darkMode);
-    } else {
-      setSelectedTheme(whiteMode);
-    }
-  };
 
   const { fetchAllProducts, fetchAllCollections, products, collections } = useContext(ShopifyContext)
 
@@ -74,7 +52,6 @@ export const Page = (props: Props) => {
   if (!products) return <div></div>;
   if (!collections) return <div></div>;
   if (collectionProductLoading) { return <div></div>; }
-  if (articleLoading) { return <div>Loading ...</div>; }
 
   return (
     <>
@@ -137,7 +114,7 @@ export const Page = (props: Props) => {
             imageAlt='NEWS'
           />
           <div className="inner" style={{ margin: "3rem auto 5rem auto" }}>
-            <NewsLists />
+            <NewsLists count={3} />
           </div>
           <div className="inner" style={{ margin: "3rem auto 5rem auto" }}>
             <OgBanner imageUrl='https://cdn.shopify.com/s/files/1/0582/1831/5820/files/img_recruit.png?v=1658468501'

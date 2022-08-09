@@ -6,15 +6,25 @@ globalStyle('html,body,#___gatsby,#gatsby-focus-wrapper', {
   height: '100%',
 });
 
-globalStyle('html, body', {
-  scrollPaddingTop: '100px',
+globalStyle('input, select', {
+  appearance: 'none',
+  border: 'solid 1px #333',
+  borderRadius: '2px',
+});
+
+globalStyle('button', {
+  cursor: 'pointer',
+})
+
+globalStyle('iframe', {
+  width: '100%',
 });
 
 globalStyle('*, ::after,::before', {
   margin: 0,
   padding: 0,
   boxSizing: "border-box",
-  fontFamily: '"-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen","Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", "sans-serif"',
+  fontFamily: '"Noto Sans JP", "sans-serif","-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen","Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", "sans-serif"',
   lineHeight: '1.5',
   fontSize: '0.875rem',
 });
@@ -108,6 +118,45 @@ globalStyle('.company h2', {
   padding: "0.25rem 1.5rem"
 });
 
+globalStyle('.company .timeline > li', {
+  margin: '0',
+});
+
+globalStyle('.company .timeline-content', {
+  display: 'block',
+  '@media': {
+    'screen and (min-width: 800px)': {
+      display: 'flex',
+    }
+  },
+  position: 'relative',
+  width: '75%',
+  float: 'left',
+  paddingLeft: '2rem',
+  borderLeft: '1px #555555 solid',
+});
+
+globalStyle('.company .timeline-period', {
+  width: '130px',
+  marginRight: '2rem',
+})
+
+globalStyle('.company .timeline > li p', {
+  marginTop: '-10px',
+});
+
+globalStyle('.company .timeline-content:before', {
+  content: '',
+  width: '12px',
+  height: '12px',
+  background: '#00762D',
+  position: 'absolute',
+  left: '-7px',
+  top: '0',
+  borderRadius: '100%',
+});
+
+
 globalStyle('.page h1,.page h2,.page h3,.term_page h1,.term_page h2,.term_page h3', {
   marginBottom: '2rem'
 })
@@ -161,6 +210,7 @@ globalStyle('body', {
 
 globalStyle('.root-wrap', {
   minHeight: '100%',
+  scrollPaddingTop: '100px',
   display: 'flex',
   flexDirection: 'column',
 })
@@ -228,6 +278,26 @@ globalStyle('.product-recommendation:after', {
   height: '1px',
   backgroundColor: '#D9D9D9',
   right: 0,
+})
+
+globalStyle('.breadcrumb li:last-child:after', {
+  content: '',
+});
+
+globalStyle('.breadcrumb li a', {
+  textDecoration: 'none',
+  color: 'gray',
+})
+
+globalStyle('.breadcrumb li:first-child a:before', {
+  content: '>',
+  fontWeight: 'normal',
+  fontSize: '1.1em',
+  color: '#2e7fea',
+})
+
+globalStyle('.breadcrumb li a:hover', {
+  textDecoration: 'underline',
 })
 
 export const [themeClass, themeVars] = createTheme({

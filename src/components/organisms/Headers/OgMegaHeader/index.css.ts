@@ -25,9 +25,11 @@ export const navCenter: string = style({
 })
 
 export const navHeader: string = style({
+    width: 'calc(100% - 2rem)',
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
+    margin: '0 auto',
 })
 
 export const divHeader: string = style({
@@ -47,11 +49,11 @@ export const overlay: string = style({
 })
 
 export const header: string = style({
-    width: 'calc(100% - 2rem)',
     position: 'sticky',
     top: '0',
     backgroundColor: '#FFFFFF',
     zIndex: '999',
+    background: '#fff',
     margin: '0 auto',
 })
 
@@ -104,7 +106,7 @@ export const aMegaMenu: string = style({
 export const quantityDiv: string = style({
     position: 'absolute',
     top: '18px',
-    right: '-2px',
+    right: '30px',
     width: '15px',
     boxSizing: 'content-box',
     height: '15px',

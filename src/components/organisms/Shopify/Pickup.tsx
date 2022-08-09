@@ -1,8 +1,17 @@
 import { McTitle } from '../../molecules';
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import ProductDetail from './ProductDetail';
+import { ShopifyContext } from '../../../context/shopifyContext';
 
 const Pickup = () => {
+    const productId = 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY4OTg4MjU0NjE4MDQ=';
+    useEffect(() => {
+        fetchProductWithId(productId)
+    }, []);
+
+    const { fetchProductWithId, product } = useContext(ShopifyContext);
+
+    if (!product.title) return <div></div>
 
     return (
         <div style={{
@@ -43,7 +52,7 @@ const Pickup = () => {
                     imageAlt='PICK UP'
                 />
                 <div className="inner" style={{ margin: '3rem auto 5rem' }}>
-                    <ProductDetail productId='Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzY4OTg4MjU0NjE4MDQ=' isDispalyRecommend={false} />
+                    <ProductDetail product={product} productId={productId} isDispalyRecommend={false} />
                 </div>
             </div>
         </div >

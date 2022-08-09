@@ -2,7 +2,6 @@ import React from 'react';
 
 const Buttons = ({ context, available, productVariant, quantity }: any) => {
     const handleAddToCart = () => {
-        console.log(productVariant);
         context.addItemToCheckout(productVariant.id, quantity)
     }
 

@@ -5,11 +5,6 @@ import { createHttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloProvider } from 'react-apollo';
-// import { useBlogSettings } from '../hooks/useBlogSettings'
-
-
-// import Client from 'shopify-buy/index.unoptimized.umd';
-
 
 interface Props {
     client: any,
@@ -20,6 +15,7 @@ interface Props {
     product: any,
     checkout: Client.Cart,
     isCartOpen: any,
+    loading: Boolean,
     fetchAllProducts: () => void,
     fetchAllCollections: () => void,
     fetchAllBlogs: () => void,
@@ -29,15 +25,15 @@ interface Props {
 }
 
 const client = Client.buildClient({
-    domain: 'ageokogyo.myshopify.com',
-    storefrontAccessToken: 'f6b263cab4f1ad6c3434d6512fc648c6'
+    domain: process.env.GATSBY_SHOPIFY_DOMAIN,
+    storefrontAccessToken: process.env.GATSBY_SHOPIFY_STOREFRONT_ACCESS_TOKEN
 });
 
-const httpLink = createHttpLink({ uri: 'https://ageokogyo.myshopify.com/api/graphql' })
+const httpLink = createHttpLink({ uri: `https://${process.env.GATSBY_SHOPIFY_DOMAIN}/api/graphql` })
 
 const middlewareLink = setContext(() => ({
     headers: {
-        'X-Shopify-Storefront-Access-Token': 'f6b263cab4f1ad6c3434d6512fc648c6'
+        'X-Shopify-Storefront-Access-Token': process.env.GATSBY_SHOPIFY_STOREFRONT_ACCESS_TOKEN
     }
 }))
 
@@ -51,11 +47,14 @@ const ShopifyContext = React.createContext({} as Props)
 
 const ShopifyProvider: FC = ({ children }) => {
     const [products, setProducts] = useState();
+    const [loading, setLoading] = useState(true);
     const [collections, setCollections] = useState();
     const [blogs, setBlogs] = useState();
     const [product, setProduct] = useState({ product: {} });
     const [checkout, setCheckout] = useState<Client.Cart>();
     const [isCartOpen, setIsCartOpen] = useState({ isCartOpen: false });
+
+
 
     useEffect(() => {
         if (localStorage.checkout) {
@@ -104,9 +103,13 @@ const ShopifyProvider: FC = ({ children }) => {
     }
 
     const fetchProductWithId = async (id: string) => {
-        const _product = await client.product.fetch(id);
-        setProduct(_product)
-        console.log(product)
+        setProduct({});
+
+        await client.product.fetch(id).then(
+            (product) => {
+                setProduct(product);
+            });
+
     }
 
     const fetchAllCollections = async () => {
@@ -114,21 +117,11 @@ const ShopifyProvider: FC = ({ children }) => {
         setCollections(collections)
     }
 
-    // const fetchAllBlogs = async () => {
-    //     const blogs = await adminClient.get({ path: 'blog' });
-    //     setBlogs(blogs)
-    // }
-
-    const closeCart = () => { setIsCartOpen({ isCartOpen: false }) }
-
-    const openCart = () => { setIsCartOpen({ isCartOpen: true }) }
-
-
     return (
         <ApolloProvider client={apolloClient}>
             <ShopifyContext.Provider value={{
                 checkout, products, product, isCartOpen, collections, apolloClient,
-                client,
+                client, loading,
                 fetchAllProducts: fetchAllProducts,
                 fetchAllCollections: fetchAllCollections,
                 fetchProductWithId: fetchProductWithId,

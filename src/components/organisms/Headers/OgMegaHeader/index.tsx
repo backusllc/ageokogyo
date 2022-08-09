@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'gatsby';
 import { GatsbyContext } from "../../../../context/context";
 import { sprinkles } from '../../../../styles/sprinkles.css';
+import { AnchorLink } from "gatsby-plugin-anchor-links";
 import { AtHumbergerButton } from '../../../atoms';
 import { div, nav, overlay, header, divHeader, liMenu, aMenu, svgMenu, navHeader, wrapMegaMenu, ulMegaMenu, liMegaMenu, aMegaMenu, quantityDiv } from './index.css';
 import menus from '../../../../constants/shopifyNavlink'
@@ -53,11 +55,11 @@ export const OgMegaHeader = () => {
 
     return <>
         <header className={header}>
+            <OgNavigation />
             <div className={navHeader}>
                 <AtHumbergerButton onClick={showSidebar} />
-                <OgNavigation />
                 <h1 style={{ margin: 0, padding: 0 }}>
-                    <a href="/"><img src="https://cdn.shopify.com/s/files/1/0582/1831/5820/files/logo_256x256.gif?v=1658329876" alt="" /></a>
+                    <Link to="/"><img src="https://cdn.shopify.com/s/files/1/0582/1831/5820/files/logo_256x256.gif?v=1658329876" alt="" /></Link>
                 </h1>
                 <div className={divHeader}>
                     <ul className={ulHeader}>
@@ -66,20 +68,21 @@ export const OgMegaHeader = () => {
                                 <li key={menu.id} className={liMenu}
                                     onMouseEnter={() => setIsShowMegaMenu(menu?.megaMenus?.length > 0)}
                                     onMouseLeave={() => setIsShowMegaMenu(false)}
+                                    onClick={() => setIsShowMegaMenu(false)}
                                 >
-                                    <a href={menu.link} className={aMenu}>{menu.text}</a>
+                                    <AnchorLink to={menu.link} className={aMenu}>{menu.text}</AnchorLink>
                                     {menu?.megaMenus?.length > 0 && isShowMegaMenu &&
                                         (
                                             <div className={wrapMegaMenu}>
                                                 <ul className={ulMegaMenu}>
                                                     {collectionProductLists.collections.edges.map((item) => (
                                                         <li className={liMegaMenu} key={item.node.id}>
-                                                            <a href={`/product_category/#${item.node.description}`}
+                                                            <AnchorLink to={`/product_category#${item.node.description}`}
                                                                 className={aMegaMenu}
-                                                                onClick={() => setIsShowMegaMenu(false)}>
+                                                                onAnchorLinkClick={() => setIsShowMegaMenu(false)}>
                                                                 <img src={item.node.image?.transformedSrc} alt={item.node.title} />
                                                                 {item.node.title}
-                                                            </a>
+                                                            </AnchorLink>
                                                         </li>
                                                     ))}
                                                 </ul>
@@ -89,7 +92,7 @@ export const OgMegaHeader = () => {
                             ))}
                     </ul>
                     <div className={liMenu}>
-                        <a href="/cart">
+                        <Link to="/cart">
                             {
                                 quantity > 0 ?
                                     <>
@@ -100,7 +103,7 @@ export const OgMegaHeader = () => {
                                     <Cart />
                             }
                             {/* </Link> */}
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

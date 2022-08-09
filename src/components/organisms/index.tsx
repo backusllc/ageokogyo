@@ -4,6 +4,7 @@ export * from "../organisms/Sections/OgTileSection"
 export * from "../organisms/Sections/OgTwoDevidedSection"
 export * from "../organisms/Sections/OgMoveImageSection"
 export * from "../organisms/Sections/OgBanner"
+export * from "../organisms/Sections/OgGatsbyBanner"
 export * from "../organisms/Sections/OgTableLayoutSection"
 
 /* Navigations */

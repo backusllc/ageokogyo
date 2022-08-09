@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { Link } from 'gatsby';
 import { ShopifyContext } from '../../../context/shopifyContext';
 
 const CollectionSelection = () => {
@@ -27,9 +28,9 @@ const CollectionSelection = () => {
             <div style={{ backgroundColor: "#555555", marginBottom: "4rem" }}>
                 <div style={{ display: "flex", gap: "1rem", justifyContent: "space-between", padding: "1rem 0" }} className="inner">
                     {collections.map((collection, index) => (
-                        < a key={index} href={collection.description} style={{ color: "#fff" }}>
+                        <Link key={index} to={`/${collection.description}`} style={{ color: "#fff" }}>
                             {collection.title}
-                        </a>
+                        </Link>
                     ))}
                 </div>
             </div>

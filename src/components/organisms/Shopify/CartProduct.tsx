@@ -1,6 +1,7 @@
 import { ShopifyContext } from '../../../context/shopifyContext';
 import React, { useContext } from 'react';
 import { FaRegTrashAlt } from "react-icons/fa";
+import { totalTd, ammountTd, nameTd, imageTd } from './CartProduct.css'
 
 const CartProduct = ({ key, line_item }) => {
 
@@ -22,20 +23,23 @@ const CartProduct = ({ key, line_item }) => {
     return (
         <>
             <tr className="is-hidden-touch">
-                <td style={{ width: '20%' }}>
+                <td className={imageTd}>
                     {imageItem}
                 </td>
-                <td style={{ verticalAlign: "inherit", width: '50%' }}>
-                    <p className="has-text-weight-semibold is-size-5 has-text-black">{line_item.title} ({line_item.variant.title}) </p>
+                <td className={nameTd}>
+                    <p className="has-text-weight-semibold is-size-5 has-text-black">{line_item.title}
+                        {
+                            line_item.variant.title != "Default Title" ? `(${line_item.variant.title})` : null
+                        }
+                    </p>
                 </td>
-                <td style={{ verticalAlign: "inherit", width: '10%', textAlign: 'center' }}>
+                <td className={ammountTd}>
                     <div style={{ marginBottom: "1rem" }}>{line_item.quantity}</div>
                     <div>
                         <FaRegTrashAlt onClick={removeItem} />
                     </div>
-                    {/* <button className="has-text-weight-normal has-text-danger link-button" type="button" onClick={removeItem}>Remove</button> */}
                 </td>
-                <td style={{ verticalAlign: "inherit", width: '10%' }}>
+                <td className={totalTd}>
                     {`￥${(parseInt(line_item.quantity * line_item.variant.price, 10)).toFixed(0)}`}
                 </td>
             </tr>

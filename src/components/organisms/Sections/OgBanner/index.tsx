@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 
 import { BannerSectionProps } from '../../../../types/ContentSettings/BannerSettings';
 import { sprinkles } from '../../../../styles/sprinkles.css';
@@ -17,9 +18,9 @@ export const OgBanner = (props: BannerSectionProps) => {
       <div className={`${wrapperDiv}`}>
         {
           props.link ? (
-            <a href={props.link}>
+            <Link to={props.link}>
               <img src={props.imageUrl} />
-            </a>
+            </Link>
           ) : <img src={props.imageUrl} />
         }
       </div>

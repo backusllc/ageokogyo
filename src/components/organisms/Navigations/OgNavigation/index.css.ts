@@ -4,6 +4,7 @@ export const wrap: string = style({
     position: 'fixed',
     top: '0',
     left: '0',
+    overflowY: 'scroll',
     width: '100%',
     height: '100%',
     background: 'rgba(0, 0, 0, 0.4)',
@@ -34,11 +35,15 @@ export const logoDiv: string = style({
     marginRight: '2rem',
 })
 
+export const logoA: string = style({
+    width: '80%',
+})
+
 export const clink: string = style({
+    backgroundColor: '#00762D'
 })
 
 export const img: string = style({
-    height: '30px',
 })
 
 export const a: string = style({
@@ -55,6 +60,12 @@ export const a: string = style({
 export const liMenu: string = style({
     borderTop: '0.1px solid #51A370',
     borderBottom: '0.1px solid #51A370',
+})
+
+export const divMenu: string = style({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
 })
 
 export const aMenu: string = style({
@@ -79,4 +90,10 @@ export const aMegaMenu: string = style({
     padding: '1.5rem',
 })
 
+export const accordionHeightActive: string = style({
+    maxHeight: '800px',
+})
 
+export const accordionHeightNotActive: string = style({
+    maxHeight: '0px',
+})

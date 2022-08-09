@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import { div, a } from './LinkButton.css'
 
 interface Props {
@@ -10,10 +11,10 @@ const LinkButton = ({ link, text }: Props) => {
 
     return (
         <div className={div}>
-            <a href={link}
+            <Link to={`/${link}`}
                 className={a}>
                 {text}
-            </a>
+            </Link>
         </div>
     );
 };

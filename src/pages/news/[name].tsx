@@ -63,7 +63,7 @@ const NewsPage = (props: any) => {
                 )
             })
             }
-            <LinkButton link="/news" text="← お知らせ一覧に戻る" />
+            <LinkButton link="news" text="← お知らせ一覧に戻る" />
         </>
     )
 }

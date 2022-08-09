@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { sprinkles } from '../../../styles/sprinkles.css';
-import { divGalleryWrap, divGalleryItem, divSubGalleryWrap, divSubGalleryItem } from './Gallery.css'
+import { divGalleryWrap, divGalleryItem, divSubGalleryWrap, divSubGalleryItem, imgWrap } from './Gallery.css'
 
 const Gallery = ({ product }) => {
     const [currentImage, setCurrentImage] = useState(product.images[0]);
+
+    useEffect(() => {
+        setCurrentImage(product.images[0]);
+    }, [product]);
 
     const divGallery = sprinkles({
         width: {
@@ -24,7 +28,7 @@ const Gallery = ({ product }) => {
     return (
         <>
             <div className={`${divGallery} ${divGalleryWrap}`}>
-                <div className={divGalleryItem}>
+                <div className={`${divGalleryItem} ${imgWrap}`}>
                     <img src={currentImage.src} alt="" />
                 </div>
 

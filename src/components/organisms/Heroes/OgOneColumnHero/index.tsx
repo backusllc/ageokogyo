@@ -1,13 +1,16 @@
 import React from 'react';
-import { section, img, gridDiv } from './index.css'
+import { section, gridDiv } from './index.css'
 
 import { AtText, AtButton } from '../../../atoms';
 import { sprinkles } from '../../../../styles/sprinkles.css';
 import { OneColumnHeroProps } from '../../../../types/TopSettings/OneColumnHeroSettings';
+import { AtImage } from '../../../atoms';
+import { graphql, Link, useStaticQuery } from 'gatsby';
+
 
 export const OgOneColumnHero = (props: OneColumnHeroProps) => {
+  const data = useStaticQuery(query);
 
-  const textDivStyle = sprinkles({ textAlign: { mobile: props.mobileTextAlign, desktop: props.desktopTextAlign, } })
   const sectionDiv = sprinkles({
     marginBottom: {
       mobile: '33',
@@ -16,15 +19,19 @@ export const OgOneColumnHero = (props: OneColumnHeroProps) => {
     }
   })
 
+
   const wrapperDiv = sprinkles({ maxWidth: props.maxWidth })
-  const marginDiv = sprinkles({ maxWidth: props.maxWidth })
-  const paddingDiv = sprinkles({ maxWidth: props.maxWidth })
 
   return (
     <>
       <section className={`${section} ${sectionDiv}`}>
         <div className={wrapperDiv} style={{ margin: '0 auto' }}>
-          <img className={img} src={props.imageUrl}></img>
+          <Link to="http://www.ageokogyo.com/thomastricycle/" target={'_blank'}>
+            <AtImage
+              image={data.allFile.edges[0].node.childrenImageSharp[0]}
+              alt={data.allFile.edges[0].node.name}
+            />
+          </Link>
           <div className={gridDiv}>
             <div>
               <AtText
@@ -71,3 +78,18 @@ export const OgOneColumnHero = (props: OneColumnHeroProps) => {
     </>
   );
 };
+
+const query = graphql`
+query {
+  allFile (filter: {name:{eq:"thomastricycle"}}){
+    edges {
+      node {
+        name
+        childrenImageSharp {
+          gatsbyImageData(placeholder: DOMINANT_COLOR)
+        }
+      }
+    }
+  }
+}
+`
