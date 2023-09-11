@@ -17,6 +17,7 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -33,11 +34,10 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-anchor-links",
+      resolve: "gatsby-plugin-google-tagmanager",
       options: {
-        offset: -100,
-        duration: 100,
-      }
-    },
+        id: "GTM-TZFM94F",
+      },
+    }
   ],
 }

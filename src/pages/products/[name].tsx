@@ -1,25 +1,24 @@
 import React, { useContext, useEffect, useState } from 'react';
-import SEO from '../../utils/seo';
 import { ShopifyContext } from './../../context/shopifyContext';
 
 import {
     OgBanner,
 } from '../../components/organisms';
-import { sprinkles } from '../../styles/sprinkles.css';
 import ProductDetail from '../../components/organisms/Shopify/ProductDetail';
+import SEO from '../../utils/seo';
 
 const ProductsPage = (props: any) => {
-    const name = props.params.name;
+    const productId = `gid://shopify/Product/${props.params.name}`;
     const { fetchProductWithId, product } = useContext(ShopifyContext);
 
     const { fetchAllCollections } = useContext(ShopifyContext)
 
     useEffect(() => {
-        fetchProductWithId(name)
+        fetchProductWithId(productId)
         asyncFetchAllCollections();
         return () => {
         };
-    }, [name]);
+    }, [productId]);
 
     async function asyncFetchAllCollections() {
         try {
@@ -30,13 +29,18 @@ const ProductsPage = (props: any) => {
     };
 
     if (!product.title) return <></>;
+    console.log(product);
 
     return (
         <>
+            <SEO title={product.title}
+                description={product.description}
+                image={product.images[0].src}
+            />
             <OgBanner imageUrl='https://cdn.shopify.com/s/files/1/0582/1831/5820/files/online_header.png?v=1658494910' link="" marginBottom='80' maxWidth="full" />
             <div className="inner">
                 {
-                    <ProductDetail product={product} isDispalyRecommend={true} />
+                    <ProductDetail product={product} isDispalyRecommend={true} productId={productId} />
                 }
             </div>
         </>

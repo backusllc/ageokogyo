@@ -1,9 +1,9 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link } from 'gatsby';
-import { AnchorLink } from "gatsby-plugin-anchor-links";
 
 import { sprinkles } from '../../../styles/sprinkles.css';
 import { wrapDiv, img, pCategory, p, price } from './CategoryProducts.css'
+import ProductCard from '../../../components/organisms/Shopify/ProductCard';
 import { useCollectionProductsSettings } from '../../../hooks/useCollectionProductsSettings';
 
 interface Props {
@@ -12,8 +12,13 @@ interface Props {
 }
 
 const CollectionSelection = ({ displayCount = 3, isDiaplayViewAll = false }: Props) => {
+    const [hashId, setId] = useState<string>();
 
     const { loading: collectionProductLoading, data: collectionProductLists } = useCollectionProductsSettings(displayCount);
+
+    useEffect(() => {
+        setId(window.location.hash.replace("#", ""));
+    }, []);
 
     if (collectionProductLoading) { return <div></div>; }
 
@@ -39,29 +44,14 @@ const CollectionSelection = ({ displayCount = 3, isDiaplayViewAll = false }: Pro
     return (
         <>
             <div className={`inner ${wrapDiv}`}>
-                {collectionProductLists.collections.edges.map((item, index) => {
+                {collectionProductLists.collections.edges.map((products, index) => {
+                    if (products.node.products.edges.length === 0) return <></>
 
                     return <>
-                        <div key={item.node.id}>
-                            <div id={item.node.description} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <p className={pCategory} > {item.node.title}</p>
-                                {isDiaplayViewAll && <div><AnchorLink to={`/product_category`} style={{ fontWeight: '700' }}>VIEW ALL ＞</AnchorLink></div>}
-                            </div>
-
-                            <div className={flexDiv}>
-                                {item.node.products.edges.map((product, index) => {
-                                    return (
-                                        <div key={index} className={itemDiv}>
-                                            <Link to={`/products/${product.node.id}`}>
-                                                <img className={img} src={product.node.images.edges[0].node.transformedSrc} alt={product.node.title} />
-                                                <p className={p}>{product.node.title}</p>
-                                                <p className={price}>{`${parseInt(product.node.priceRange.minVariantPrice.amount, 10)}円 (税込)`}</p>
-                                            </Link>
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                        </div>
+                        <ProductCard
+                            isScroll={products.node.description === hashId}
+                            isDiaplayViewAll={isDiaplayViewAll}
+                            products={products} />
                     </>
                 })}
             </div>

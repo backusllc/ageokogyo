@@ -6,7 +6,7 @@ export const useBlogSettings = (count: number) => useQuery(query, { variables: {
 
 const query = gql`
 query($count:Int){
-  articles(first: $count, sortKey: UPDATED_AT, reverse: true) {
+  articles(first: $count, sortKey: PUBLISHED_AT, reverse: true) {
     edges {
       node {
         id

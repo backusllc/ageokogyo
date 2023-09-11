@@ -43,7 +43,7 @@ const NewsPage = (props: any) => {
                                         width: "100px",
                                         overflow: "hidden",
                                         fontWeight: "700",
-                                    }}>{dateFormat(article.node.publishedAt, "yyyy/mm/dd")}</p>
+                                    }}>{dateFormat(article.node.articleByHandle.publishedAt, "yyyy/mm/dd")}</p>
                                 </div>
                                 <div style={{ marginBottom: "1.25rem" }}>
                                     <h2 style={{ fontSize: "1.5rem", fontWeight: "700" }}>{article.node.articleByHandle.title}</h2>

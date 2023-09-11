@@ -29,3 +29,26 @@ export const title: string = style({
     fontSize: "1rem",
     margin: "0",
 })
+
+export const imgWrap: string = style({
+    width: '100%',
+    height: '100%',
+    position: 'relative',
+    paddingTop: '71%',
+    '@media': {
+        'screen and (min-width: 1024px)': {
+            paddingTop: '33%',
+        }
+    }
+})
+
+export const img: string = style({
+    position: 'absolute',
+    inset: '0',
+    display: 'block',
+    maxWidth: '100%',
+    height: '100%',
+    width: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center center',
+});

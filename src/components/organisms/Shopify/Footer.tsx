@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { sprinkles } from '../../../styles/sprinkles.css';
-import { footer } from './Footer.css'
+import { footer, footerInner, copyright } from './Footer.css'
 
 const Footer = () => {
 
@@ -12,15 +12,17 @@ const Footer = () => {
             desktop: 'flex',
         },
         justifyContent: 'center',
+        flexDirection: 'row',
+        flexWrap: 'nowrap',
         alignItems: 'center',
         gap: '10',
     })
     const thisYear = new Date().getFullYear();
 
     return (
-        <footer className={footer}>
-            <div style={{ backgroundColor: "#E6E6E6", paddingTop: '1rem', paddingBottom: '1rem' }}>
-                <div className={`${termDiv} inner`} style={{ maxWidth: "864px", margin: '0 auto', height: '100%' }}>
+        <footer >
+            <div className={footerInner} >
+                <div className={`${termDiv} inner`} style={{ maxWidth: "864px", margin: '0 auto', height: '100%', width: '100%' }}>
                     <div>
                         <Link style={{ fontSize: '1rem' }} className="termLink" to="/notification">利用規約</Link>
                     </div>
@@ -39,11 +41,7 @@ const Footer = () => {
 
                 </div>
             </div>
-            <div style={{
-                backgroundColor: "#555555", color: "#fff", height: '30px', display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-            }}>
+            <div className={copyright}>
                 <div>{`${thisYear} ©Ageokogyo all rights reserved`}</div>
             </div>
         </footer >

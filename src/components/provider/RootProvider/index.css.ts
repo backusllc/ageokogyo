@@ -10,10 +10,12 @@ globalStyle('input, select', {
   appearance: 'none',
   border: 'solid 1px #333',
   borderRadius: '2px',
+  color:'#000000',
 });
 
 globalStyle('button', {
   cursor: 'pointer',
+  color:'#000000',
 })
 
 globalStyle('iframe', {
@@ -48,10 +50,9 @@ globalStyle('tr', {
 });
 
 globalStyle('th', {
-  width: '20%',
+  width: '35%',
   padding: '1rem 0.5rem',
   fontSize: '1rem',
-  whiteSpace: 'nowrap',
 });
 
 globalStyle('td', {

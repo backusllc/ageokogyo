@@ -40,7 +40,7 @@ const CartProduct = ({ key, line_item }) => {
                     </div>
                 </td>
                 <td className={totalTd}>
-                    {`￥${(parseInt(line_item.quantity * line_item.variant.price, 10)).toFixed(0)}`}
+                    {`￥${(parseInt(line_item.quantity * line_item.variant.price, 10)).toLocaleString()}`}
                 </td>
             </tr>
         </>

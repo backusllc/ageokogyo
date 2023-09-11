@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Link } from 'gatsby'
-import { AnchorLink } from "gatsby-plugin-anchor-links";
 
 import { GatsbyContext } from '../../../../context/context'
 import { wrap, container, clink, divMenu, a } from './index.css'
@@ -69,13 +68,14 @@ export const OgNavigation = () => {
                                         {menu?.megaMenus?.length > 0 && setActive ?
                                             <ul className={`${wrapMegaMenu} ${accordionHeight}`}>
                                                 {collectionProductLists.collections.edges.map((item) => (
-                                                    <li className={liMegaMenu} key={item.node.id}>
-                                                        <AnchorLink to={`/product_category#${item.node.description}`}
-                                                            className={aMegaMenu}
-                                                            onAnchorLinkClick={hideSidebar}>
-                                                            {item.node.title}
-                                                        </AnchorLink>
-                                                    </li>
+                                                    item.node.products.edges.length === 0 ? <></> :
+                                                        <li className={liMegaMenu} key={item.node.id}>
+                                                            <Link to={`/product_category#${item.node.description}`}
+                                                                className={aMegaMenu}
+                                                                onClick={hideSidebar}>
+                                                                {item.node.title}
+                                                            </Link>
+                                                        </li>
                                                 ))}
                                             </ul> : null
                                         }

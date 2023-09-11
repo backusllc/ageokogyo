@@ -7,24 +7,6 @@ import { div, nav, navCenter, navHeader } from './index.css';
 
 import { NormalHeaderProps } from '../../../../types/HeaderSettings/NormalHeaderSettings';
 
-
-// interface Props {
-//     imageUrl: string;
-//     maxWidth?: Sprinkles['maxWidth'];
-//     mobileWrapJusifyContent: Sprinkles['justifyContent'];
-//     desktopWrapJustifyContent: Sprinkles['justifyContent'];
-//     mobileWrapPadding: string;
-//     desktopWrapPadding: string;
-//     mobileWrapMargin: string;
-//     desktopWrapMargin: string;
-//     mobileImageHeight: string;
-//     desktopImageHeight: string;
-//     mobileImagePadding: string;
-//     desktopImagePadding: string;
-//     mobileImageMargin: string;
-//     desktopImageMargin: string;
-// }
-// justifyContent = "space-between", maxWidth = "xlarge"
 export const OgNormalHeader = (props: NormalHeaderProps) => {
     const { isSidebarOpen, showSidebar } = useContext(GatsbyContext)
 

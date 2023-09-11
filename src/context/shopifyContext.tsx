@@ -29,7 +29,7 @@ const client = Client.buildClient({
     storefrontAccessToken: process.env.GATSBY_SHOPIFY_STOREFRONT_ACCESS_TOKEN
 });
 
-const httpLink = createHttpLink({ uri: `https://${process.env.GATSBY_SHOPIFY_DOMAIN}/api/graphql` })
+const httpLink = createHttpLink({ uri: `https://${process.env.GATSBY_SHOPIFY_DOMAIN}/api/2022-07/graphql` })
 
 const middlewareLink = setContext(() => ({
     headers: {
@@ -54,11 +54,10 @@ const ShopifyProvider: FC = ({ children }) => {
     const [checkout, setCheckout] = useState<Client.Cart>();
     const [isCartOpen, setIsCartOpen] = useState({ isCartOpen: false });
 
-
-
     useEffect(() => {
-        if (localStorage.checkout) {
-            fetchCheckout(localStorage.checkout);
+        const checkoutId = localStorage.getItem("checkout");
+        if (checkoutId) {
+            fetchCheckout(checkoutId);
         } else {
             createCheckout();
         }
@@ -78,23 +77,30 @@ const ShopifyProvider: FC = ({ children }) => {
             })
     }
 
-    const fetchCheckout = async (checkoutId) => {
+    const fetchCheckout = async (checkoutId : string) => {
         client.checkout
             .fetch(checkoutId)
             .then((checkout) => {
                 setCheckout(checkout);
+                if(!checkout) {
+                    createCheckout();
+                }
             })
             .catch((err) => console.log(err));
-
     };
 
     const addItemToCheckout = async (variantId: any, quantity: any) => {
-        const lineItemsToAdd = [{
-            variantId,
-            quantity: parseInt(quantity, 10)
-        }]
-        const _checkout = await client.checkout.addLineItems(checkout.id, lineItemsToAdd)
-        setCheckout(_checkout)
+        try {
+
+            const lineItemsToAdd = [{
+                variantId,
+                quantity: parseInt(quantity, 10)
+            }]
+            const _checkout = await client.checkout.addLineItems(checkout.id, lineItemsToAdd)
+            setCheckout(_checkout)
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     const fetchAllProducts = async () => {
@@ -109,7 +115,6 @@ const ShopifyProvider: FC = ({ children }) => {
             (product) => {
                 setProduct(product);
             });
-
     }
 
     const fetchAllCollections = async () => {

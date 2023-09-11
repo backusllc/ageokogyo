@@ -18,42 +18,42 @@ export default [
                 "link": "/product_category#sports",
                 "src" : "https://cdn.shopify.com/s/files/1/0582/1831/5820/collections/700C-FAIRLADY-Z-18SP-W-SIDE-540x405_1.jpg?v=1658320717",
             },
-            {
-                "id": 1.3,
-                "text": "CTB自転車",
-                "link": "/product_category#sports",
-                "src" : "https://cdn.shopify.com/s/files/1/0582/1831/5820/collections/226246MESETAHD2019BL-540x405_1.jpg?v=1658320750",
-            },
+            // {
+            //     "id": 1.3,
+            //     "text": "CTB自転車",
+            //     "link": "/product_category#sports",
+            //     "src" : "https://cdn.shopify.com/s/files/1/0582/1831/5820/collections/226246MESETAHD2019BL-540x405_1.jpg?v=1658320750",
+            // },
             {
                 "id": 1.4,
                 "text": "折りたたみ自転車",
                 "link": "/product_category#sports",
                 "src" : "https://cdn.shopify.com/s/files/1/0582/1831/5820/collections/207-NISSAN-WH-1_1.jpg?v=1658320854",
             },
-            {
-                "id": 1.5,
-                "text": "子供用自転車",
-                "link": "/product_category#sports",
-                "src" : "https://cdn.shopify.com/s/files/1/0582/1831/5820/collections/246-VISCARIA-HD-P-SIDE-540x405_1.jpg?v=1658320803",
-            },
+            // {
+            //     "id": 1.5,
+            //     "text": "子供用自転車",
+            //     "link": "/product_category#sports",
+            //     "src" : "https://cdn.shopify.com/s/files/1/0582/1831/5820/collections/246-VISCARIA-HD-P-SIDE-540x405_1.jpg?v=1658320803",
+            // },
             {
                 "id": 1.6,
                 "text": "幼児用自転車",
                 "link": "/product_category#sports",
                 "src" : "https://cdn.shopify.com/s/files/1/0582/1831/5820/collections/16-XTRAIL-SIDE-540x405_1.jpg?v=1658320777",
             },
-            {
-                "id": 1.7,
-                "text": "三輪車",
-                "link": "/product_category#sports",
-                "src" : "https://cdn.shopify.com/s/files/1/0582/1831/5820/collections/93634cc8938c7024cffd4edd82398b48-540x405.jpg?v=1658320830",
-            },
-            {
-                "id": 1.7,
-                "text": "/product_category#その他",
-                "link": "/other",
-                "src" : "",
-            }
+            // {
+            //     "id": 1.7,
+            //     "text": "三輪車",
+            //     "link": "/product_category#sports",
+            //     "src" : "https://cdn.shopify.com/s/files/1/0582/1831/5820/collections/93634cc8938c7024cffd4edd82398b48-540x405.jpg?v=1658320830",
+            // },
+            // {
+            //     "id": 1.7,
+            //     "text": "/product_category#その他",
+            //     "link": "/other",
+            //     "src" : "",
+            // }
         ]
     },
     {

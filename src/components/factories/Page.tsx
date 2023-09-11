@@ -1,15 +1,15 @@
 import React, { useContext, useEffect } from 'react';
-import dateFormat from "dateformat";
-import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
+import { graphql, useStaticQuery } from 'gatsby';
+import { useLocation } from "@reach/router"
 
 import { ShopifyContext } from '../../context/shopifyContext';
-import { darkMode, theme, whiteMode } from '../../styles/theme.css';
+import { theme, whiteMode } from '../../styles/theme.css';
 import { PageRuntimeSettings } from '../../types/PageSettings';
 import { CommonRuntimeSettings } from '../../types/SiteSettings';
 import { McTitle } from '../molecules';
 
 import { useCollectionProductsSettings } from '../../hooks/useCollectionProductsSettings'
-
+import SEO from '../../utils/seo'
 
 import {
   OgTileSection,
@@ -28,10 +28,15 @@ interface Props {
 export const Page = (props: Props) => {
   const collectionDisplayCount = 128;
   const { loading: collectionProductLoading, data: collectionProductLists } = useCollectionProductsSettings(collectionDisplayCount);
-
   const [selectedTheme, setSelectedTheme] = React.useState<string>(whiteMode);
-
   const { fetchAllProducts, fetchAllCollections, products, collections } = useContext(ShopifyContext)
+  const data = useStaticQuery(query);
+  const location = useLocation();
+
+  const title = "上尾工業株式会社";
+  const description = "上尾工業株式会社の公式通販サイト。シティサイクル · スポーツサイクル · CTB自転車 · 幼児用自転車 · 子供用自転車 · 三輪車 · 折りたたみ自転車 · きかんしゃトーマスなどの自転車製品を販売しています。"
+  const image = `${location.origin}${data.allFile.edges[0].node.childrenImageSharp[0].gatsbyImageData.images.fallback.src}`;
+  const isArticle = false;
 
   useEffect(() => {
     async function asyncFetchAllProducts() {
@@ -53,8 +58,14 @@ export const Page = (props: Props) => {
   if (!collections) return <div></div>;
   if (collectionProductLoading) { return <div></div>; }
 
+
   return (
     <>
+      <SEO title={title}
+        description={description}
+        image={image}
+        article={isArticle}
+      />
       <div className={selectedTheme}>
         <div className={theme}>
           <Hero settings={props.pageSettings.top} />
@@ -131,3 +142,18 @@ export const Page = (props: Props) => {
     </>
   );
 };
+
+const query = graphql`
+query {
+  allFile (filter: {name:{eq:"thomastricycle"}}){
+    edges {
+      node {
+        name
+        childrenImageSharp {
+          gatsbyImageData(placeholder: DOMINANT_COLOR)
+        }
+      }
+    }
+  }
+}
+`

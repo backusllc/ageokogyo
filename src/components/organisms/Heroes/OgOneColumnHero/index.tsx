@@ -26,12 +26,10 @@ export const OgOneColumnHero = (props: OneColumnHeroProps) => {
     <>
       <section className={`${section} ${sectionDiv}`}>
         <div className={wrapperDiv} style={{ margin: '0 auto' }}>
-          <Link to="http://www.ageokogyo.com/thomastricycle/" target={'_blank'}>
-            <AtImage
-              image={data.allFile.edges[0].node.childrenImageSharp[0]}
-              alt={data.allFile.edges[0].node.name}
-            />
-          </Link>
+          <AtImage
+            image={data.allFile.edges[0].node.childrenImageSharp[0]}
+            alt={data.allFile.edges[0].node.name}
+          />
           <div className={gridDiv}>
             <div>
               <AtText

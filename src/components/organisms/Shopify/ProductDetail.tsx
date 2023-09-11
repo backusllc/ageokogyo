@@ -1,8 +1,9 @@
 
 
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Gallery from './../../organisms/Shopify/Gallery';
-import Buttons from './../../organisms//Shopify/Buttons';
+import Buttons from './../../organisms/Shopify/Buttons';
+import ContactButtons from './../../organisms/Shopify/ContactButtons';
 import QuantityButton from './../../organisms//Shopify/QuantityButton';
 import VariantSelectors from './../../organisms//Shopify/VariantSelectors';
 import { ShopifyContext } from './../../../context/shopifyContext';
@@ -12,23 +13,18 @@ import Recommend from './Recommend';
 interface Props {
     product: any,
     isDispalyRecommend: boolean,
+    productId?: string,
 }
 
-const ProductDetail = ({ product, isDispalyRecommend = true }: Props) => {
-
-    useEffect(() => {
-        return () => {
-        };
-    }, []);
-
-    const { fetchProductWithId, client } = useContext(ShopifyContext);
-    const context = useContext(ShopifyContext);
-    const [quantity, setQuantity] = useState(1);
+const ProductDetail = ({ product, isDispalyRecommend = true, productId = "" }: Props) => {
     const [variant, setVariant] = useState(product.variants ? product.variants[0] : null);
-    // const [available, setAvailable] = useState(variant ? productVariant.availableForSale : null)
+    const { fetchProductWithId, client } = useContext(ShopifyContext);
+    const productVariant = variant ? (client.product.helpers.variantForOptions(product, variant) || variant) : variant;
+    const [quantity, setQuantity] = useState(1);
+
+    const context = useContext(ShopifyContext);
 
     if (!product.title) return <div></div>
-    const productVariant = variant ? (client.product.helpers.variantForOptions(product, variant) || variant) : variant;
 
     const divProduct = sprinkles({
         display: {
@@ -56,7 +52,7 @@ const ProductDetail = ({ product, isDispalyRecommend = true }: Props) => {
                 <div style={{ marginBottom: "3rem" }}>
                     <div style={{ marginBottom: "2rem" }}>
                         <p style={{ fontSize: "24px", margin: "0" }}>{product.title}</p>
-                        <p style={{ fontSize: "18px", color: "#E35700" }}>{parseInt(product.variants[0].price, 10)}円 (税込)</p>
+                        <p style={{ fontSize: "18px", color: "#E35700" }}>{parseInt(product.variants[0].price, 10).toLocaleString()}円 (税込)</p>
                         <div className='description'
                             dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
                         />
@@ -78,15 +74,20 @@ const ProductDetail = ({ product, isDispalyRecommend = true }: Props) => {
                             <QuantityButton quantity={quantity} setQuantity={setQuantity} />
                         </div>
                     </div>
+                    {/* {productVariant.available ? */}
                     <Buttons
                         context={context}
-                        available={true}
+                        available={productVariant.available}
                         quantity={quantity}
                         productVariant={productVariant}
                     />
+                    {!productVariant.available ?
+                        <ContactButtons />
+                        : null
+                    }
                 </div>
             </div>
-            {isDispalyRecommend && <Recommend />}
+            {isDispalyRecommend && <Recommend productId={productId} />}
         </>
 
     );

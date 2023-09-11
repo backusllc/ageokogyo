@@ -49,7 +49,7 @@ const Cart = () => {
                                 <div>
                                     <div>
                                         <h2 className={h2}>小計</h2>
-                                        <p className={p}>¥{checkout.subtotalPrice}円</p>
+                                        <p className={p}>¥{parseInt(checkout.subtotalPrice).toLocaleString()}円</p>
                                     </div>
                                     <small className={small}>税込みで、配送料は購入手続き時に計算されます
                                     </small>

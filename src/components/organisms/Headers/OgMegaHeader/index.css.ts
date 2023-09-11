@@ -1,5 +1,12 @@
 import { globalStyle, style } from '@vanilla-extract/css';
 
+export const banner: string = style({
+    textAlign: 'center',
+    backgroundColor: 'red',
+    color: 'white',
+    fontSize: '14px',
+})
+
 export const div: string = style({
     margin: '0 auto',
 })
