@@ -43,6 +43,8 @@ const ProductDetail = ({ product, isDispalyRecommend = true, productId = "" }: P
         }))
     }
 
+    console.log(product.variants[0].price.amount);
+
     return (
         <>
             <div className={divProduct}>
@@ -52,7 +54,7 @@ const ProductDetail = ({ product, isDispalyRecommend = true, productId = "" }: P
                 <div style={{ marginBottom: "3rem" }}>
                     <div style={{ marginBottom: "2rem" }}>
                         <p style={{ fontSize: "24px", margin: "0" }}>{product.title}</p>
-                        <p style={{ fontSize: "18px", color: "#E35700" }}>{parseInt(product.variants[0].price, 10).toLocaleString()}円 (税込)</p>
+                        <p style={{ fontSize: "18px", color: "#E35700" }}>{parseInt(product.variants[0].price.amount, 10).toLocaleString()}円 (税込)</p>
                         <div className='description'
                             dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
                         />

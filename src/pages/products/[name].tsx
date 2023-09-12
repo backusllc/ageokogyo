@@ -29,7 +29,6 @@ const ProductsPage = (props: any) => {
     };
 
     if (!product.title) return <></>;
-    console.log(product);
 
     return (
         <>

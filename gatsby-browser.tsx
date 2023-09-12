@@ -7,7 +7,7 @@ import { RootPrivider } from "./src/components/provider/RootProvider/index"
 
 import { GatsbyProvider } from "./src/context/context"
 import { ShopifyProvider } from "./src/context/shopifyContext"
-import { OgMegaHeader } from "./src/components/organisms";
+import { OgMegaHeader } from "./src/components/organisms/Headers/OgMegaHeader";
 import Footer from './src/components/organisms/Shopify/Footer';
 import { Helmet } from "react-helmet"
 
@@ -35,7 +35,7 @@ const wrapPageElement: GatsbyBrowser['wrapPageElement'] = ({
                             <main>
                                 {element}
                             </main>
-                            <Footer />
+                            {/* <Footer /> */}
                         </ShopifyProvider>
                     </GatsbyProvider>
                 </RootPrivider>

@@ -14,6 +14,7 @@ type Props = {
 };
 
 export const AtImage = ({ ...props }: Props) => {
+    debugger;
     return (
         <>
             <GatsbyImage

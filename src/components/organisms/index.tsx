@@ -22,7 +22,7 @@ export * from "../organisms/Heroes/OgTwoColumnHero"
 export * from "../organisms/Headers/OgNormalHeader"
 export * from "../organisms/Headers/OgEvHeader"
 export * from "../organisms/Headers/OgFloatHeader"
-export * from "./Headers/OgMegaHeader"
+export * from "../organisms/Headers/OgMegaHeader"
 
 /* Footers */
 export * from "../organisms/Footers/OgNormalFooter"
