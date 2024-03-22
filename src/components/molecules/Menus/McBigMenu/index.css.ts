@@ -3,7 +3,7 @@ import { globalStyle, style } from '@vanilla-extract/css';
 export const navLinks: string = style({
     display: "none",
     '@media': {
-        'screen and (min-width: 800px)': {
+        'screen and (min-width: 768px)': {
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
             maxWidth: '500px',
@@ -13,7 +13,7 @@ export const navLinks: string = style({
 
 export const li: string = style({
     '@media': {
-        'screen and (min-width: 800px)': {
+        'screen and (min-width: 768px)': {
             padding: '1rem 0',
             position: 'relative',
         }

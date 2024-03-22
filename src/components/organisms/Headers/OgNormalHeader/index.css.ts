@@ -18,7 +18,7 @@ export const navCenter: string = style({
     margin: "0 auto",
     display: 'flex',
     '@media': {
-        'screen and (min-width: 800px)': {
+        'screen and (min-width: 768px)': {
             alignItems: "center",
         }
     }

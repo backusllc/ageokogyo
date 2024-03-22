@@ -1,37 +1,19 @@
-import React from 'react'; /* eslint-disable */
+import React from "react"; /* eslint-disable */
+import { label, selectBox, variantContainer } from "./VariantSelectors.css";
 
-const VariantSelector = ({ key, onChange, options }) => {
-    return (
-        <div style={{ display: "flex",alignItems:"center" }}>
-            <label className="label" style={{ width: "50px" }}>{options.name} </label>
-
-            <div className="control">
-                <div className="select is-fullwidth">
-                    <select onChange={onChange} name={(options.name)} key={options.id}
-                        style={{
-                            height: "46px",
-                            width: "120px",
-                            padding: "10px",
-                            backgroundColor: "white",
-                            border: "1px solid #999999",
-                        }}
-                    >
-                        {
-                            options.values.map(value => (
-                                <option
-                                    key={`${options.name}-${value}`}
-                                    value={value}
-                                    className="is-medium"
-                                >
-                                    {`${value}`}
-                                </option>
-                            ))
-                        }
-                    </select>
-                </div>
-            </div>
-        </div>
-    );
+const VariantSelector = ({ key, onChange, options }: any) => {
+  return (
+    <div className={variantContainer} key={key}>
+      <label className={label}>{options.name} </label>
+      <select onChange={onChange} name={options.name} key={options.id} className={selectBox}>
+        {options.values.map((value: string) => (
+          <option key={`${options.name}-${value}`} value={value} className="is-medium">
+            {`${value}`}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
 };
 
 export default VariantSelector;

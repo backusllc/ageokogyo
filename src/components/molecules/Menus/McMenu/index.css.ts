@@ -3,7 +3,7 @@ import { style } from '@vanilla-extract/css';
 export const navLinks: string = style({
   display: 'none',
   '@media': {
-    'screen and (min-width: 800px)': {
+    'screen and (min-width: 768px)': {
       display: 'flex',
     },
   },
@@ -11,7 +11,7 @@ export const navLinks: string = style({
 
 export const li: string = style({
   '@media': {
-    'screen and (min-width: 800px)': {
+    'screen and (min-width: 768px)': {
       padding: '1rem 1.5rem 1rem 0',
       position: 'relative',
     },

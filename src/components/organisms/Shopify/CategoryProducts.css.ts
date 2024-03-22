@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
 export const wrapDiv: string = style({
-    marginTop: '3rem',
+    // marginTop: '3rem',
 });
 
 export const img: string = style({

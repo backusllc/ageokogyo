@@ -1,62 +1,45 @@
-import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { Link } from 'gatsby';
+import React, { useEffect, useState } from "react";
 
-import { sprinkles } from '../../../styles/sprinkles.css';
-import { wrapDiv, img, pCategory, p, price } from './CategoryProducts.css'
-import ProductCard from '../../../components/organisms/Shopify/ProductCard';
-import { useCollectionProductsSettings } from '../../../hooks/useCollectionProductsSettings';
+import { wrapDiv } from "./CategoryProducts.css";
+import ProductCards from "./ProductCards";
+import { useCollectionProductsSettings } from "../../../hooks/useCollectionProductsSettings";
 
-interface Props {
-    displayCount?: number,
-    isDiaplayViewAll: boolean,
-}
+const CategoryProducts = ({ displayCount = 3, isDiaplayViewAll = false }) => {
+  const [hashId, setId] = useState<string>();
 
-const CollectionSelection = ({ displayCount = 3, isDiaplayViewAll = false }: Props) => {
-    const [hashId, setId] = useState<string>();
+  const { loading: collectionProductLoading, data: collectionProductLists } = useCollectionProductsSettings(displayCount);
 
-    const { loading: collectionProductLoading, data: collectionProductLists } = useCollectionProductsSettings(displayCount);
+  useEffect(() => {
+    setId(window.location.hash.replace("#", ""));
+  }, []);
 
-    useEffect(() => {
-        setId(window.location.hash.replace("#", ""));
-    }, []);
+  if (collectionProductLoading) {
+    return <></>;
+  }
 
-    if (collectionProductLoading) { return <div></div>; }
+  let customIndex = 1;
 
-    const flexDiv = sprinkles({
-        display: {
-            mobile: 'block',
-            tablet: 'flex',
-            desktop: 'flex',
-        },
-        justifyContent: 'flex-start',
-        flexWrap: 'wrap',
-        gap: '10',
-    })
+  return (
+    <>
+      <div className={`${wrapDiv}`}>
+        {collectionProductLists.collections.edges.map((products: any) => {
+          if (products.node.products.edges.length === 0) return null;
 
-    const itemDiv = sprinkles({
-        width: {
-            mobile: '100%',
-            tablet: '50%',
-            desktop: '30%',
-        },
-    })
+          const currentIndex = customIndex++;
 
-    return (
-        <>
-            <div className={`inner ${wrapDiv}`}>
-                {collectionProductLists.collections.edges.map((products, index) => {
-                    if (products.node.products.edges.length === 0) return <></>
-
-                    return <>
-                        <ProductCard
-                            isScroll={products.node.description === hashId}
-                            isDiaplayViewAll={isDiaplayViewAll}
-                            products={products} />
-                    </>
-                })}
-            </div>
-        </>
-    );
+          return (
+            <ProductCards
+              key={currentIndex}
+              productIndex={currentIndex}
+              isScroll={products.node.description === hashId}
+              isDiaplayViewAll={isDiaplayViewAll}
+              products={products}
+            />
+          );
+        })}
+      </div>
+    </>
+  );
 };
 
-export default CollectionSelection;
+export default CategoryProducts;

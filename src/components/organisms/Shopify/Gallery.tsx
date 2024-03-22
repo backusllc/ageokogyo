@@ -1,54 +1,53 @@
-import React, { useEffect, useState } from 'react';
-import { sprinkles } from '../../../styles/sprinkles.css';
-import { divGalleryWrap, divGalleryItem, divSubGalleryWrap, divSubGalleryItem, imgWrap } from './Gallery.css'
+import React, { useEffect, useState } from "react";
+import { sprinkles } from "../../../styles/sprinkles.css";
+import {
+  divGalleryWrap,
+  selectedProduct,
+  divSubGalleryWrap,
+  divSubGalleryItem,
+  imgWrap,
+  selectedProductImage,
+  galleryImage,
+} from "./Gallery.css";
 
-const Gallery = ({ product }) => {
-    const [currentImage, setCurrentImage] = useState(product.images[0]);
+const Gallery = ({ product }: any) => {
+  const [currentImage, setCurrentImage] = useState(product.images[0]);
 
-    useEffect(() => {
-        setCurrentImage(product.images[0]);
-    }, [product]);
+  useEffect(() => {
+    setCurrentImage(product.images[0]);
+  }, [product]);
 
-    const divGallery = sprinkles({
-        width: {
-            mobile: "100%",
-            tablet: "50%",
-            desktop: "50%",
-        },
-    });
+  const divGallery = sprinkles({
+    width: {
+      mobile: "100%",
+      tablet: "50%",
+      desktop: "50%",
+    },
+  });
 
-    const divSubGalleryItemWidth = sprinkles({
-        width: {
-            mobile: "30%",
-            tablet: "20%",
-            desktop: "20%",
-        },
-    });
+  return (
+    <>
+      <div className={`${divGallery} ${divGalleryWrap}`}>
+        <div className={`${selectedProduct} ${imgWrap}`}>
+          <img src={currentImage.src} alt="" className={selectedProductImage} />
+        </div>
 
-    return (
-        <>
-            <div className={`${divGallery} ${divGalleryWrap}`}>
-                <div className={`${divGalleryItem} ${imgWrap}`}>
-                    <img src={currentImage.src} alt="" />
-                </div>
-
-                <div className={divSubGalleryWrap}>
-                    {product.images.map((x, i) => (
-                        currentImage === product.images[i] ?
-                            <div className={`${divSubGalleryItem} ${divSubGalleryItemWidth}`}>
-                                <img src={x.src} alt="" />
-                            </div>
-                            :
-                            <div onMouseOver={e => setCurrentImage(product.images[i])}
-                                className={`${divSubGalleryItem} ${divSubGalleryItemWidth}`}
-                            >
-                                <img src={x.src} alt="" />
-                            </div>
-                    ))}
-                </div>
-            </div>
-        </>
-    );
+        <div className={divSubGalleryWrap}>
+          {product.images.map((x: any, i: number) =>
+            currentImage === product.images[i] ? (
+              <div className={divSubGalleryItem} key={i}>
+                <img src={x.src} alt="" className={galleryImage} />
+              </div>
+            ) : (
+              <div onMouseOver={e => setCurrentImage(product.images[i])} className={divSubGalleryItem}>
+                <img src={x.src} alt="" className={galleryImage} />
+              </div>
+            )
+          )}
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Gallery;

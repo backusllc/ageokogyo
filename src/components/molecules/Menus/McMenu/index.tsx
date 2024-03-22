@@ -14,32 +14,32 @@ export const McMenu = () => {
             {
                 index : '1',
                 url: '',
-                label: 'オンラインストア',
+                label: 'ONLINE STORE',
             },
             {
                 index : '2',
                 url: '/information',
-                label: 'お知らせ',
+                label: 'NEWS',
             },
             {
                 index : '3',
                 url: '/recruit',
-                label: '採用情報',
+                label: 'RECRUIT',
             },
             {
                 index : '4',
                 url: '/company',
-                label: '会社概要',
+                label: 'COMPANY',
             },
             {
                 index : '5',
                 url: '/faq',
-                label: 'よくある質問',
+                label: 'FAQ',
             },
             {
                 index : '6',
                 url: '/contactus',
-                label: 'お問合せ',
+                label: 'CONTACT',
             },
         ]
         setMenu(menu);

@@ -9,7 +9,7 @@ export const tileLayout: string = style({
     gridTemplateRows: '300px 300px',
     gridAutoRows: '300px',
     '@media': {
-        'screen and (min-width: 800px)': {
+        'screen and (min-width: 768px)': {
             gridTemplateColumns: '1fr 1fr',
         },
         'screen and (min-width: 1200px)': {

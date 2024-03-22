@@ -1,60 +1,39 @@
-import React from 'react';
+import React from "react";
+import {
+  label,
+  quantityBox,
+  quantityNumber,
+  quantityContainer,
+  quantityDecreaseButton,
+  quantityIncreaseButton,
+} from "./QuantityButton.css";
 
-const QuantityButton = ({ quantity, setQuantity }) => {
-    const increaseQuantity = () => {
-        setQuantity(q => q + 1);
-    }
-    const decreaseQuantity = () => {
-        setQuantity(q => (q <= 1 ? 1 : q - 1));
-    }
-    return (
-        <div style={{ display: "flex", alignItems: "center" }}>
-            <label className="label" htmlFor="quantity" style={{ width: "50px" }}>数量</label>
-            <div style={{ display: "flex", alignItems: "center" }}>
-                <div className="control">
-                    <button className="button" onClick={decreaseQuantity}
-                        style={{
-                            height: "46px",
-                            width: "30px",
-                            backgroundColor: "white",
-                            border: "1px solid #999999",
-                            borderRightStyle: "none",
-                        }}
-                    >
-                        -
-                    </button>
-                </div>
-                <div className="control">
-                    <button className="button"
-                        style={{
-                            width: "60px",
-                            height: "46px",
-                            backgroundColor: "white",
-                            border: "1px solid #999999",
-                            borderRightStyle: "none",
-                            borderLeftStyle: "none",
-                            fontSize: "1rem",
-                        }}
-                    >
-                        {quantity}
-                    </button>
-                </div>
-                <div className="control">
-                    <button className="button" onClick={increaseQuantity}
-                        style={{
-                            height: "46px",
-                            width: "30px",
-                            backgroundColor: "white",
-                            border: "1px solid #999999",
-                            borderLeftStyle: "none",
-                        }}
-                    >
-                        +
-                    </button>
-                </div>
-            </div>
-        </div >
-    );
+interface Props {
+  quantity: number;
+  setQuantity: any;
+}
+
+const QuantityButton = ({ quantity, setQuantity }: Props) => {
+  const increaseQuantity = () => {
+    setQuantity((q: number) => q + 1);
+  };
+  const decreaseQuantity = () => {
+    setQuantity((q: number) => (q <= 1 ? 1 : q - 1));
+  };
+  return (
+    <div className={quantityContainer}>
+      <label className={label}>数量</label>
+      <div className={quantityBox}>
+        <button className={quantityDecreaseButton} onClick={decreaseQuantity}>
+          -
+        </button>
+        <div className={quantityNumber}>{quantity}</div>
+        <button onClick={increaseQuantity} className={quantityIncreaseButton}>
+          +
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default QuantityButton;

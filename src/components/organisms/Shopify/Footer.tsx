@@ -1,51 +1,40 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import { sprinkles } from '../../../styles/sprinkles.css';
-import { footer, footerInner, copyright } from './Footer.css'
+import React from "react";
+import { Link } from "gatsby";
+
+import Logo from "../../../assets/images/logo.svg";
+import { footerContainer, footerInner, termLink, logoContainer, copyrightContainer, copyright, companyName } from "./Footer.css";
+
+const links = [
+  { to: "/notification", text: "利用規約" },
+  { to: "/privacy", text: "個人情報保護方針" },
+  { to: "/tokushohou", text: "特定商取引法に基づく表記" },
+  { to: "/refund", text: "返金ポリシー" },
+  { to: "/shipping", text: "配送ポリシー" },
+];
+
+const thisYear = new Date().getFullYear();
 
 const Footer = () => {
-
-    const termDiv = sprinkles({
-        display: {
-            mobile: 'block',
-            tablet: 'flex',
-            desktop: 'flex',
-        },
-        justifyContent: 'center',
-        flexDirection: 'row',
-        flexWrap: 'nowrap',
-        alignItems: 'center',
-        gap: '10',
-    })
-    const thisYear = new Date().getFullYear();
-
-    return (
-        <footer >
-            <div className={footerInner} >
-                <div className={`${termDiv} inner`} style={{ maxWidth: "864px", margin: '0 auto', height: '100%', width: '100%' }}>
-                    <div>
-                        <Link style={{ fontSize: '1rem' }} className="termLink" to="/notification">利用規約</Link>
-                    </div>
-                    <div>
-                        <Link style={{ fontSize: '1rem' }} className="termLink" to="/privacy">個人情報保護方針</Link>
-                    </div>
-                    <div>
-                        <Link style={{ fontSize: '1rem' }} className="termLink" to="/tokushohou">特定商取引法に基づく表記</Link>
-                    </div>
-                    <div>
-                        <Link style={{ fontSize: '1rem' }} className="termLink" to="/refund">返金ポリシー</Link>
-                    </div>
-                    <div>
-                        <Link style={{ fontSize: '1rem' }} className="termLink" to="/shipping">配送ポリシー</Link>
-                    </div>
-
-                </div>
-            </div>
-            <div className={copyright}>
-                <div>{`${thisYear} ©Ageokogyo all rights reserved`}</div>
-            </div>
-        </footer >
-    );
+  return (
+    <footer className={footerContainer}>
+      <div className={footerInner}>
+        <div>
+          {links.map((link, index) => (
+            <Link key={index} className={termLink} to={link.to}>
+              {link.text}
+            </Link>
+          ))}
+        </div>
+        <div className={logoContainer}>
+          <Logo />
+          <div className={copyrightContainer}>
+            <div className={companyName}>上尾工業株式会社</div>
+            <div className={copyright}>{`${thisYear} ©Ageokogyo all rights reserved`}</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

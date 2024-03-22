@@ -1,1 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="36" height="48" viewBox="0 0 36 48"><g transform="translate(-324 -107)"><text transform="translate(331 152)" fill="#e35700" font-size="10" font-family="YuGothicUI-Bold, Yu Gothic UI" font-weight="700"><tspan x="0" y="0">カート</tspan></text><g transform="translate(324 107)"><ellipse cx="1.902" cy="1.758" rx="1.902" ry="1.758" transform="translate(13.902 28.484)" fill="#e35700"/><ellipse cx="1.902" cy="1.758" rx="1.902" ry="1.758" transform="translate(24.371 28.484)" fill="#e35700"/><path d="M36.942,8.2H10.9L9.937,3.726H3.192a2.454,2.454,0,0,0-2.25,2.6,2.454,2.454,0,0,0,2.25,2.6H6.423l4.623,20.83H32.159l1.125-5.208H14.56L14,21.952H33.846Z" transform="translate(-0.942 -3.726)" fill="#e35700"/></g></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 28.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="レイヤー_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" width="70px" height="70px" viewBox="0 0 70 70" style="enable-background:new 0 0 70 70;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+	.st1{fill:none;stroke:#3E3E3E;stroke-width:2;}
+	.st2{clip-path:url(#SVGID_00000066477960141306158420000002794671457570313147_);}
+	.st3{fill:none;stroke:#3E3E3E;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+</style>
+<g id="グループ_12909" transform="translate(7911 15517.102)">
+	<g id="長方形_6257" transform="translate(-7911 -15517.102)">
+		<rect class="st0" width="70" height="70"/>
+		<rect x="1" y="1" class="st1" width="68" height="68"/>
+	</g>
+	<g id="グループ_12908" transform="translate(-7895.521 -15499.971)">
+		<g>
+			<defs>
+				<rect id="SVGID_1_" x="0" y="0" width="44.8" height="37.1"/>
+			</defs>
+			<clipPath id="SVGID_00000055668762666582448220000005279353766290925744_">
+				<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+			</clipPath>
+			
+				<g id="グループ_12845" transform="translate(0 0)" style="clip-path:url(#SVGID_00000055668762666582448220000005279353766290925744_);">
+				<circle id="楕円形_294" class="st3" cx="10.3" cy="32.7" r="3.9"/>
+				<circle id="楕円形_295" class="st3" cx="25.9" cy="32.7" r="3.9"/>
+				<path id="パス_15461" class="st3" d="M44.4,0.5h-7.7l-4.8,26H4.3"/>
+				<line id="線_637" class="st3" x1="3.4" y1="21.2" x2="0.5" y2="5.7"/>
+				<line id="線_638" class="st3" x1="0.5" y1="5.7" x2="35.7" y2="5.7"/>
+				<line id="線_639" class="st3" x1="3.4" y1="21.2" x2="32.8" y2="21.2"/>
+				<line id="線_640" class="st3" x1="1.4" y1="10.9" x2="34.7" y2="10.9"/>
+				<line id="線_641" class="st3" x1="2.4" y1="16.1" x2="33.7" y2="16.1"/>
+				<line id="線_642" class="st3" x1="12.2" y1="5.7" x2="12.2" y2="21.2"/>
+				<line id="線_643" class="st3" x1="24" y1="5.7" x2="24" y2="21.2"/>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>

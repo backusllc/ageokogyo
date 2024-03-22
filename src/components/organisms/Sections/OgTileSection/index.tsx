@@ -1,54 +1,46 @@
-import React, { FC } from 'react'
-import { Link } from 'gatsby';
+import React from "react";
+import { Link } from "gatsby";
 
-import { svg, grid, itemDiv, titleDiv, title, imgWrap, img } from './index.css'
-import { sprinkles } from '../../../../styles/sprinkles.css';
-import { TileSectionProps } from 'types/ContentSettings/TileSectionSettings';
-import Arrow from '../../../../assets/images/arrow.svg'
+import { grid, title, imgWrap, img, bordered } from "./index.css";
+import { sprinkles } from "../../../../styles/sprinkles.css";
+import { Title } from "../../../../components/molecules/Title";
 
-export const OgTileSection = (props: TileSectionProps) => {
+interface Props {
+  dataSrc: any;
+  isSubMenu?: boolean;
+}
 
+export const OgTileSection = ({ dataSrc, isSubMenu = false }: Props) => {
   return (
     <>
-      <section>
-        <div className="inner">
-          <div className={`${grid} ${sprinkles({
+      <div className="inner">
+        <Title titleEn={"PRODUCT CATEGORY"} titleJa={"商品カテゴリー"} />
+
+        <div
+          className={`${grid} ${sprinkles({
             gridTemplateColumns: {
               mobile: "2x",
-              tablet: "2x",
-              desktop: "2x",
-            }
-          })}`}>
-            {props.dataSrc.map((item, index) => {
-              if (item.node.products.edges.length === 0) return <></>
-              return (
-                <Link key={item.node.id} to={`/product_category#${item.node.description}`}>
-                  <div key={index} className={`${itemDiv} ${sprinkles({
-                    display: {
-                      mobile: "block",
-                      tablet: "block",
-                      desktop: "flex",
-                    }
-                  })}`} >
-                    <div className={imgWrap}>
-                      <img
-                        src={item.node.image?.transformedSrc}
-                        alt={item.node.title}
-                        className={img}
-                      ></img>
-                    </div>
-
-                    <div className={titleDiv}>
-                      <p className={title}>{item.node.title}</p>
-                      <Arrow className={svg} />
-                    </div>
+              tablet: "3x",
+              desktop: "3x",
+            },
+          })}`}
+        >
+          {dataSrc.map((item: any, index: number) => {
+            if (item.node.products.edges.length === 0) return <></>;
+            return (
+              <Link key={item.node.id} to={`/product_category#${item.node.description}`}>
+                <div key={index}>
+                  <div className={`${imgWrap} ${isSubMenu ? "" : bordered}`}>
+                    <img src={item.node.image?.transformedSrc} alt={item.node.title} className={img}></img>
                   </div>
-                </Link>
-              )
-            })}
-          </div>
+
+                  <p className={title}>{item.node.title}</p>
+                </div>
+              </Link>
+            );
+          })}
         </div>
-      </section>
+      </div>
     </>
-  )
-}
+  );
+};

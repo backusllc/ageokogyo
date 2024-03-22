@@ -28,7 +28,7 @@ export const ul: string = style({
     gridGap: '1rem',
     gridTemplateRows: 'repeat(auto-fit, minmax(10em, 1fr))',
     // '@media': {
-    //     'screen and (min-width: 800px)': {
+    //     'screen and (min-width: 768px)': {
     //         gridTemplateColumns: '1fr 1fr 1fr',
     //         gridTemplateRows: '1fr 1fr 1fr',
     //         gridAutoRows: '250px',

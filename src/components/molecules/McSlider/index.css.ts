@@ -13,7 +13,7 @@ export const h2: string = style({
     top: '10px',
     opacity: '0',
     '@media': {
-        'screen and (min-width: 800px)': {
+        'screen and (min-width: 768px)': {
             fontSize: '1.4rem',
         }
     }
@@ -28,7 +28,7 @@ export const h3: string = style({
     opacity: '0',
     lineHeight: '1.5',
     '@media': {
-        'screen and (min-width: 800px)': {
+        'screen and (min-width: 768px)': {
             fontSize: '0.8rem',
             top: '80px',
         }

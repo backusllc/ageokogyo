@@ -1,0 +1,25 @@
+<svg class="trash" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="45" height="45" viewBox="0 0 45 45">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="長方形_6354" data-name="長方形 6354" width="21.763" height="26.231" fill="none" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="グループ_13093" data-name="グループ 13093" transform="translate(-1120 -338)">
+    <g id="長方形_6352" data-name="長方形 6352" transform="translate(1120 338)" fill="#fff" stroke="#3e3e3e" stroke-width="1">
+      <rect width="45" height="45" stroke="none"/>
+      <rect x="0.5" y="0.5" width="44" height="44" fill="none"/>
+    </g>
+    <g id="グループ_13092" data-name="グループ 13092" transform="translate(215.996 14.301)">
+      <g id="グループ_13091" data-name="グループ 13091" transform="translate(916.003 332.699)">
+        <g id="グループ_13090" data-name="グループ 13090" transform="translate(0 0)" clip-path="url(#clip-path)">
+          <path id="パス_15492" data-name="パス 15492" d="M19.368,32.745H4.632a.57.57,0,0,1-.569-.524L2.47,14.989H21.53L19.937,32.221A.57.57,0,0,1,19.368,32.745Z" transform="translate(-1.118 -6.786)" fill="none" stroke="#2d2e2e" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <path id="パス_15493" data-name="パス 15493" d="M20.7,3.968V1.65A1.153,1.153,0,0,0,19.544.5h-7.31a.967.967,0,0,0-.968.967v2.5" transform="translate(-5.101 -0.224)" fill="none" stroke="#2d2e2e" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <rect id="長方形_6353" data-name="長方形 6353" width="21.22" height="4.46" rx="1.034" transform="translate(0.272 3.743)" fill="none" stroke="#2d2e2e" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <line id="線_678" data-name="線 678" y2="12.187" transform="translate(11.087 10.987)" fill="none" stroke="#2d2e2e" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <line id="線_679" data-name="線 679" x2="0.824" y2="12.179" transform="translate(6.039 10.995)" fill="none" stroke="#2d2e2e" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <line id="線_680" data-name="線 680" x1="0.412" y2="12.185" transform="translate(15.312 10.991)" fill="none" stroke="#2d2e2e" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

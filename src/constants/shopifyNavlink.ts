@@ -1,9 +1,13 @@
-import React from "react"
-
 export default [
     {
+        "id": 0,
+        "text": "TOP",
+        "link": "/",
+        "dropdown": []
+    },
+    {
         "id": 1,
-        "text": "オンラインストア",
+        "text": "ONLINE STORE",
         "link": "/product_category",
         "megaMenus": [
             {
@@ -58,31 +62,31 @@ export default [
     },
     {
         "id": 2,
-        "text": "お知らせ",
+        "text": "NEWS",
         "link": "/news",
         "dropdown": []
     },
     {
         "id": 3,
-        "text": "採用情報",
+        "text": "RECRUIT",
         "link": "/recruit",
         "dropdown": [],
     },
     {
         "id": 4,
-        "text": "会社概要",
+        "text": "COMPANY",
         "link": "/company",
         "dropdown": []
     },
     {
         "id": 5,
-        "text": "よくある質問",
+        "text": "FAQ",
         "link": "/faq",
         "dropdown": []
     },
     {
         "id": 6,
-        "text": "お問合せ",
+        "text": "CONTACT",
         "link": "/contact",
         "dropdown": []
     }

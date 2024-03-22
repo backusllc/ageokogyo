@@ -1,52 +1,46 @@
-import { style } from '@vanilla-extract/css';
+import { style } from "@vanilla-extract/css";
+
+export const formContainer: string = style({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+});
 
 export const formDiv: string = style({
-  marginBottom: '1rem',
-})
+  marginBottom: "20px",
+});
 
 export const selectItems: string = style({
-  width: '100%',
-  fontSize: '1rem',
-  padding: '0.5rem',
-})
+  width: "100%",
+  fontSize: "1rem",
+  padding: "0.5rem",
+});
 
 export const label: string = style({
-  display: 'block',
-  width: '100%',
-  fontSize: '1rem',
-  marginBottom: '0.25rem',
+  display: "flex",
+  alignItems: "center",
+  gap: "5px",
+  width: "100%",
+  fontSize: "14px",
+  marginBottom: "5px",
 });
 
 export const abbr: string = style({
-  color: 'red',
-  textDecorationStyle: 'unset',
-})
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  fontSize: "10px",
+  letterSpacing: "0.5px",
+  lineHeight: "150%",
+  color: "#fff",
+  padding: "2px 5px",
 
-export const input: string = style({
-  fontSize: '1rem',
-  padding: '1rem',
-  width: '100%',
-})
-
-export const link: string = style({
-  fontSize: '1rem',
-  display: 'inline',
-  textDecoration: 'underline',
-})
-
-export const div: string = style({
-  textAlign: "center",
-  marginBottom: '3rem',
+  width: "fit-content",
+  background: "#C4A870",
 });
 
-export const button: string = style({
-  display: 'inline-flex',
-  color: 'white',
-  padding: '1.5rem 7rem',
-  backgroundColor: 'rgb(0, 118, 45)',
-  alignItems: 'center',
-  justifyContent: 'center',
-  borderRadius: '35px',
-  fontSize: '1.25rem',
-  border: 'none',
-})
+export const input: string = style({
+  fontSize: "1rem",
+  padding: "1rem",
+  width: "100%",
+});
