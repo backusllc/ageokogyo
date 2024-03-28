@@ -10,7 +10,7 @@ import { CommonRuntimeSettings } from "../../types/SiteSettings";
 import { useCollectionProductsSettings } from "../../hooks/useCollectionProductsSettings";
 import SEO from "../../utils/seo";
 
-import { OgTileSection, OgBanner } from "../organisms";
+import { OgTileSection, OgBanner, OgGatsbyBanner } from "../organisms";
 import Pickup from "../../components/organisms/Shopify/Pickup";
 import CategoryProducts from "../../components/organisms/Shopify/CategoryProducts";
 import NewsLists from "../../components/organisms/Shopify/NewsLists";
@@ -34,7 +34,7 @@ export const Page = (props: Props) => {
   const title = "上尾工業株式会社";
   const description =
     "上尾工業株式会社の公式通販サイト。シティサイクル · スポーツサイクル · CTB自転車 · 幼児用自転車 · 子供用自転車 · 三輪車 · 折りたたみ自転車 · きかんしゃトーマスなどの自転車製品を販売しています。";
-  const image = `${location.origin}${data.allFile.edges[0].node.childrenImageSharp[0].gatsbyImageData.images.fallback.src}`;
+  const image = `https://ageokogyo.com/logo.jpg`;
   const isArticle = false;
 
   useEffect(() => {
@@ -68,14 +68,26 @@ export const Page = (props: Props) => {
           <div className="inner" style={{ margin: "3rem auto 5rem auto" }}>
             <NewsLists count={3} />
           </div>
-          <div className="inner" style={{ margin: "3rem auto 5rem auto" }}>
-            <OgBanner
-              imageUrl="https://cdn.shopify.com/s/files/1/0582/1831/5820/files/img_recruit.png?v=1658468501"
-              maxWidth="small"
-              marginBottom="0"
-              marginRight="auto"
-              marginLeft="auto"
-              link="recruit"
+          <div className="inner pc" style={{ margin: "3rem auto 5rem auto" }}>
+            <OgGatsbyBanner
+              image={data.img_recruit_pc.edges[0].node.childrenImageSharp[0]}
+              alt={data.img_recruit_pc.edges[0].node.name}
+              titleJa={""}
+              titleEn={""}
+              link="/recruit"
+              maxWidth={"full"}
+              marginBottom={"10"}
+            />
+          </div>
+          <div className="inner sp" style={{ margin: "3rem auto 5rem auto" }}>
+            <OgGatsbyBanner
+              image={data.img_recruit_sp.edges[0].node.childrenImageSharp[0]}
+              alt={data.img_recruit_sp.edges[0].node.name}
+              titleJa={""}
+              titleEn={""}
+              link="/recruit"
+              maxWidth={"full"}
+              marginBottom={"10"}
             />
           </div>
           <Pickup />
@@ -88,7 +100,18 @@ export const Page = (props: Props) => {
 
 const query = graphql`
   query {
-    allFile(filter: { name: { eq: "thomastricycle" } }) {
+    img_recruit_pc: allFile(filter: { name: { eq: "img_recruit_pc" } }) {
+      edges {
+        node {
+          name
+          childrenImageSharp {
+            gatsbyImageData(placeholder: DOMINANT_COLOR)
+          }
+        }
+      }
+    }
+
+    img_recruit_sp: allFile(filter: { name: { eq: "img_recruit_sp" } }) {
       edges {
         node {
           name

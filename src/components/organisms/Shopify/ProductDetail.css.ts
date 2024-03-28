@@ -1,6 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
 export const productContainer: string = style({
+  maxWidth: "1194px",
   margin: "0 auto",
   width: "calc(100% - 30px)",
 

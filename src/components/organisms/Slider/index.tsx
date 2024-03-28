@@ -10,7 +10,9 @@ const HeroSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 1000,
+    autoplay: true,
+    autoplaySpeed: 2500,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
@@ -18,14 +20,16 @@ const HeroSlider = () => {
   return (
     <div className={sliderWrap}>
       <Slider {...settings} className={`${sliders} ${pc} hero`}>
-        <AtImage image={data.slider_01.edges[0].node.childrenImageSharp[0]} alt={data.slider_01.edges[0].node.name} />
-        <AtImage image={data.slider_02.edges[0].node.childrenImageSharp[0]} alt={data.slider_02.edges[0].node.name} />
-        <AtImage image={data.slider_03.edges[0].node.childrenImageSharp[0]} alt={data.slider_03.edges[0].node.name} />
+        <AtImage image={data.slider_01_pc.edges[0].node.childrenImageSharp[0]} alt={data.slider_01_pc.edges[0].node.name} />
+        <AtImage image={data.slider_02_pc.edges[0].node.childrenImageSharp[0]} alt={data.slider_02_pc.edges[0].node.name} />
+        <AtImage image={data.slider_03_pc.edges[0].node.childrenImageSharp[0]} alt={data.slider_03_pc.edges[0].node.name} />
+        <AtImage image={data.slider_04_pc.edges[0].node.childrenImageSharp[0]} alt={data.slider_04_pc.edges[0].node.name} />
       </Slider>
       <Slider {...settings} className={`${sliders} ${sp} hero`}>
-        <AtImage image={data.slider_03.edges[0].node.childrenImageSharp[0]} alt={data.slider_03.edges[0].node.name} />
-        <AtImage image={data.slider_02.edges[0].node.childrenImageSharp[0]} alt={data.slider_02.edges[0].node.name} />
-        <AtImage image={data.slider_01.edges[0].node.childrenImageSharp[0]} alt={data.slider_01.edges[0].node.name} />
+        <AtImage image={data.slider_01_sp.edges[0].node.childrenImageSharp[0]} alt={data.slider_01_sp.edges[0].node.name} />
+        <AtImage image={data.slider_02_sp.edges[0].node.childrenImageSharp[0]} alt={data.slider_02_sp.edges[0].node.name} />
+        <AtImage image={data.slider_03_sp.edges[0].node.childrenImageSharp[0]} alt={data.slider_03_sp.edges[0].node.name} />
+        <AtImage image={data.slider_04_sp.edges[0].node.childrenImageSharp[0]} alt={data.slider_04_sp.edges[0].node.name} />
       </Slider>
     </div>
   );
@@ -35,7 +39,7 @@ export default HeroSlider;
 
 const query = graphql`
   query {
-    slider_01: allFile(filter: { name: { eq: "slider_01" } }) {
+    slider_01_pc: allFile(filter: { name: { eq: "slider_01_pc" } }) {
       edges {
         node {
           name
@@ -46,7 +50,7 @@ const query = graphql`
       }
     }
 
-    slider_02: allFile(filter: { name: { eq: "slider_02" } }) {
+    slider_02_pc: allFile(filter: { name: { eq: "slider_02_pc" } }) {
       edges {
         node {
           name
@@ -57,7 +61,62 @@ const query = graphql`
       }
     }
 
-    slider_03: allFile(filter: { name: { eq: "slider_03" } }) {
+    slider_03_pc: allFile(filter: { name: { eq: "slider_03_pc" } }) {
+      edges {
+        node {
+          name
+          childrenImageSharp {
+            gatsbyImageData(placeholder: DOMINANT_COLOR)
+          }
+        }
+      }
+    }
+
+    slider_04_pc: allFile(filter: { name: { eq: "slider_04_pc" } }) {
+      edges {
+        node {
+          name
+          childrenImageSharp {
+            gatsbyImageData(placeholder: DOMINANT_COLOR)
+          }
+        }
+      }
+    }
+
+    slider_01_sp: allFile(filter: { name: { eq: "slider_01_sp" } }) {
+      edges {
+        node {
+          name
+          childrenImageSharp {
+            gatsbyImageData(placeholder: DOMINANT_COLOR)
+          }
+        }
+      }
+    }
+
+    slider_02_sp: allFile(filter: { name: { eq: "slider_02_sp" } }) {
+      edges {
+        node {
+          name
+          childrenImageSharp {
+            gatsbyImageData(placeholder: DOMINANT_COLOR)
+          }
+        }
+      }
+    }
+
+    slider_03_sp: allFile(filter: { name: { eq: "slider_03_sp" } }) {
+      edges {
+        node {
+          name
+          childrenImageSharp {
+            gatsbyImageData(placeholder: DOMINANT_COLOR)
+          }
+        }
+      }
+    }
+
+    slider_04_sp: allFile(filter: { name: { eq: "slider_04_sp" } }) {
       edges {
         node {
           name

@@ -42,6 +42,24 @@ globalStyle("*, ::after,::before", {
   fontSize: "0.875rem",
 });
 
+globalStyle(".pc", {
+  display: "none",
+  "@media": {
+    "screen and (min-width: 768px)": {
+      display: "block",
+    },
+  },
+});
+
+globalStyle(".sp", {
+  display: "block",
+  "@media": {
+    "screen and (min-width: 768px)": {
+      display: "none",
+    },
+  },
+});
+
 globalStyle("ul", { listStyleType: "none" });
 globalStyle("a", { textDecoration: "none", wordBreak: "normal", display: "block", color: "#333" });
 globalStyle("img", {
@@ -124,6 +142,10 @@ globalStyle(".faq p,.faq a", {
   fontWeight: "400",
   letterSpacing: "0.84px",
   lineHeight: "150%",
+});
+
+globalStyle(".faq a", {
+  textDecoration: "underline",
 });
 
 globalStyle(".faq .question", {

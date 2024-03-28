@@ -74,12 +74,12 @@ export const OgMegaHeader = () => {
 
   return (
     <>
-      {/* <div className={banner}>
+      <div className={banner}>
         現在、オンライン販売は東京・埼玉限定です。※
         <br />
         ※折畳み自転車・
         部品・乗り物等の箱出荷商品は沖縄離島を除く日本国内配送可能
-      </div> */}
+      </div>
       <header className={header}>
         <OgNavigation />
         <div className={navHeader}>
