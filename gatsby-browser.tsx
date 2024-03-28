@@ -30,10 +30,10 @@ const wrapPageElement: GatsbyBrowser["wrapPageElement"] = ({ element }) => {
             name: "google-site-verification",
             content: "pn7zXrifzWh048hSklqhUHr5ujbyVAE49L0S7kgANgs",
           },
-          // {
-          //   name: 'robots',
-          //   content: 'noindex',
-          // },
+          {
+            name: 'robots',
+            content: 'noindex',
+          },
         ]}
       />
       <RecoilRoot>
